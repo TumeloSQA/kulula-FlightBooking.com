@@ -1,0 +1,121 @@
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <a routerLink='/administrator' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+
+            <li><a routerLink='/manage-seat-selection'>manage Seat Selection</a></li>
+            <li><a routerLink='/manage-aircraft'>manage aircraft</a></li>
+            <li>
+                <div class="dropdowns">
+                    <button class="dropbtn">Manage</button>
+                    <div class="dropdown-contents">
+                        <a routerLink='/manage-preferred-class'>manage preferred class</a>
+                        <a routerLink='/manage-route'>manage airport arrival</a>
+                        <a routerLink='/manage-flight-extras'>manage Flight Extra</a>
+                        <a routerLink='/manage-flight-booking'>manage Flight Booking</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<h1>Manage flight Departure</h1>
+<p>Please enter Departing flight information below</p>
+<div class="row">
+    <form class="col s12" #airportRegistrationForm="ngForm">
+        <div class="row">
+            <input type="hidden" name="AirportID" #AirportID="ngModel" [(ngModel)]="airportservice.sectedAirport.AirportID" class="validate">
+            <input type="hidden" name="AircraftID" #AircraftID="ngModel" [(ngModel)]="airportservice.sectedAirport.AircraftID" class="validate">
+            <input type="hidden" name="ArrivalID" #ArrivalID="ngModel" [(ngModel)]="airportservice.sectedAirport.ArrivalID" class="validate">
+
+            <div class="input-field col s6 ">
+                <input placeholder="AirportName" id="AirportName" type="text" name="AirportName" #AirportName="ngModel" [(ngModel)]="airportservice.sectedAirport.AirportName" class="validate" required>
+                <label for="AirportName">AirportName</label>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <ng2-dropdown>
+                        <ng2-dropdown-button>
+                            {{combobox}}
+                        </ng2-dropdown-button>
+                        <ng2-dropdown-menu>
+                            <ng2-menu-item *ngFor="let route of routeservice.routelist" (click)="routeinfo(route)">
+                                {{route.AirportName}}
+                            </ng2-menu-item>
+                        </ng2-dropdown-menu>
+                    </ng2-dropdown>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <ng2-dropdown>
+                        <ng2-dropdown-button>
+                            {{aircraftcomb}}
+                        </ng2-dropdown-button>
+                        <ng2-dropdown-menu>
+                            <ng2-menu-item *ngFor="let aircraft of aicraftservice.aircraftlist" (click)="aircraftinfo(aircraft)">
+                                {{aircraft.AircraftName}}
+                            </ng2-menu-item>
+                        </ng2-dropdown-menu>
+                    </ng2-dropdown>
+                </div>
+            </div>
+            <div class="input-field col s6 ">
+
+                <input placeholder="DepartingTime" id="DepartingTime" type="time" name="DepartingTime" #DepartingTime="ngModel" [(ngModel)]="airportservice.sectedAirport.DepartingTime" class="validate" required>
+                <label for="AirportName">Departing Time</label>
+            </div>
+            <div class="input-field col s6 ">
+
+                <input placeholder="DepartingDate" min="{{today}}" id="DepartingDate" type="date" name="DepartingDate" #DepartingDate="ngModel" [(ngModel)]="airportservice.sectedAirport.DepartingDate" class="validate" required>
+                <label for="DepartingDate">DepartingDate</label>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light" (click)="onSubmit(airportRegistrationForm)">Insert
+          <i class="material-icons right">send</i>
+        </button>
+        <button class="btn waves-effect waves-light" (click)="updatesubmit(airportRegistrationForm)">Update
+            <i class="material-icons right">send</i>
+          </button>
+
+    </form>
+</div>
+
+
+<table class="responsive-table">
+    <table>
+        <thead>
+            <tr>
+                <th>airport ID</th>
+                <th>AircraftID</th>
+                <th>ArrivalID</th>
+                <th>Airport Name</th>
+                <th>Departing Time</th>
+                <th>Departing Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let airport of airportservice.airportlist">
+                <td>{{airport.AirportID}}</td>
+                <td>{{airport.AircraftID}}</td>
+                <td>{{airport.ArrivalID}}</td>
+                <td>{{airport.AirportName}}</td>
+                <td>{{airport.DepartingTime}}</td>
+                <td>{{airport.DepartingDate}}</td>
+
+                <td>
+                    <a class="btn " (click)="showForEdit(airport)">
+                        <i class="tiny material-icons ">create</i>
+                    </a>
+                </td>
+                <td>
+                    <a class="fg" (click)="onDelete(airport.AirportID)">
+                        <i class="tiny material-icons ">delete</i>
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</table>

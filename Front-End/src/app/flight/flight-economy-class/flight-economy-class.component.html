@@ -1,0 +1,296 @@
+<nav *ngIf="userClaims">
+    <div class="nav-wrapper">
+        <a routerLink='/homepage' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a><i class="Tiny material-icons">local_airport</i>new flight</a></li>
+            <li><a href="manage.html"><i class="Tiny material-icons">border_color</i>manage bookings</a></li>
+            <li><a href="Info.html"><i class="Tiny material-icons ">assignment</i>Info</a></li>
+            <li>Welcome {{userClaims.UserName}}</li>
+        </ul>
+    </div>
+</nav>
+<p>.</p>
+<div class="di">
+    <div class="bt">
+        <button class="btn waves-effect waves-light right green darken-4" type="submit">R{{CartTotalPrice}}
+    <i class="material-icons left">shopping_cart</i>
+</button>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <p class="pas">Departing Airport : {{airport.AirportName}} >> Arriving Airport : {{arrivalname}} || number of travellers : {{flightbooking.NumberOfTravellers}}</p>
+        </div>
+        <div class="col s4">
+            <p class="pas">Departing Date : {{date}} </p>
+        </div>
+        <div class="col s6" *ngIf="flightbooking.ReturningDate">
+            <p class="pas">Returning Date : {{flightbooking.ReturningDate}}</p>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>Select your departing flight</h1>
+<br>
+<br>
+<br>
+<br>
+<section>
+    <table class="striped">
+        <thead>
+            <tr>
+
+                <th>Departure</th>
+                <th>Carrier</th>
+                <th>Economy</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <div class="row">
+                        <div class="col s4">
+                            <p class="pa">Departing Date: {{date}}</p>
+                        </div>
+                        <div class="col s4">
+                            <p class="pa">Departure: {{time}} {{airport.AirportName}}</p>
+                            <p class="pa">Arrival: {{arrivaltime}} {{arrivalname}}</p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div class="row">
+                        <div class="col s2">
+                            <p><img src="assets\images\airline.png" alt=""></p>
+                            <p>{{aircraftname}}</p>
+                        </div>
+                    </div>
+                </td>
+                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">From R{{StadardPrice}}</a>
+
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+                        <div class="modal-content">
+                            <h4>Select per person fare</h4>
+                            <p>
+                                <td>
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <div class="card white">
+                                                <div class="card-content black-text white">
+                                                    <span class="card-title center white-text">.</span>
+                                                    <hr>
+                                                    <p>Checked Baggage</p>
+                                                    <hr>
+                                                    <p>Flight Cancellations (Pre-Flight)</p>
+                                                    <hr>
+                                                    <p>Food, Beverage And Other</p>
+                                                    <hr>
+                                                    <p>Flight Changes</p>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <div class="card grey lighten-1">
+                                                <div class="card-content black-text">
+                                                    <span class="card-title center">Standard</span>
+                                                    <hr>
+                                                    <p>1 Bag @ 23kg</p>
+                                                    <hr>
+                                                    <p>Non-Refundable</p>
+                                                    <hr>
+                                                    <p>Traveller Meal</p>
+                                                    <hr>
+                                                    <p>R399 + Fare Difference</p>
+                                                    <hr>
+                                                    <br>
+                                                    <button class="btn waves-effect modal-action modal-close waves-light leftcyan darken-4" (click)="addCArtStandard()">R {{StadardPrice}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <div class="card grey lighten-1">
+                                                <div class="card-content black-text">
+                                                    <span class="card-title">Semi-Flex</span>
+                                                    <hr>
+                                                    <p>1 Bag @ 23kg</p>
+                                                    <hr>
+                                                    <p>50% Refund</p>
+                                                    <hr>
+                                                    <p>Traveller Meal</p>
+                                                    <hr>
+                                                    <p>R200 + Fare Difference</p>
+                                                    <hr>
+                                                    <br>
+                                                    <button class="btn waves-effect modal-action modal-close waves-light left  teal darken-1" (click)="addCArtSemiflex()">R {{semiflex}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <div class="card grey lighten-1">
+                                                <div class="card-content black-text">
+                                                    <span class="card-title">Fully-Flex</span>
+                                                    <hr>
+                                                    <p>1 Bag @ 23kg</p>
+                                                    <hr>
+                                                    <p>Refundable</p>
+                                                    <hr>
+                                                    <p>Traveller Meal</p>
+                                                    <hr>
+                                                    <p>Free & Unlimited + Fare Difference</p>
+                                                    <hr>
+                                                    <br>
+                                                    <button class="btn waves-effect modal-action modal-close waves-light left green darken-4" (click)="addCArtFullyflex()">R {{fullyflex}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </p>
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <h2 *ngIf="flightbooking.ReturningDate">Select your returning flight</h2>
+    <table class="striped" *ngIf="flightbooking.ReturningDate">
+        <thead>
+            <tr>
+
+                <th>Departure</th>
+                <th>Carrier</th>
+                <th>Economy</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{time}} >> {{arrivaltime}}</td>
+                <td>{{aircraftname}}<img src="assets\images\airline.png" alt=""></td>
+                <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">From R{{StadardPrice}}</a>
+
+                    <!-- Modal Structure -->
+                    <div id="modal1" class="modal">
+                        <div class="modal-content">
+                            <h4>Select per person fare</h4>
+                            <p>
+                                <td>
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <div class="card white">
+                                                <div class="card-content black-text white">
+                                                    <span class="card-title center white-text">.</span>
+                                                    <hr>
+                                                    <p>Checked Baggage</p>
+                                                    <hr>
+                                                    <p>Flight Cancellations (Pre-Flight)</p>
+                                                    <hr>
+                                                    <p>Food, Beverage And Other</p>
+                                                    <hr>
+                                                    <p>Flight Changes</p>
+                                                    <hr>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <div class="card grey lighten-1">
+                                                <div class="card-content black-text">
+                                                    <span class="card-title center">Standard</span>
+                                                    <hr>
+                                                    <p>1 Bag @ 23kg</p>
+                                                    <hr>
+                                                    <p>Non-Refundable</p>
+                                                    <hr>
+                                                    <p>Traveller Meal</p>
+                                                    <hr>
+                                                    <p>R399 + Fare Difference</p>
+                                                    <hr>
+                                                    <br>
+                                                    <button class="btn waves-effect modal-action modal-close waves-light left green darken-4" (click)="addCArtStandard()">R {{StadardPrice}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <div class="card grey lighten-1">
+                                                <div class="card-content black-text">
+                                                    <span class="card-title">Semi-Flex</span>
+                                                    <hr>
+                                                    <p>1 Bag @ 23kg</p>
+                                                    <hr>
+                                                    <p>50% Refund</p>
+                                                    <hr>
+                                                    <p>Traveller Meal</p>
+                                                    <hr>
+                                                    <p>R200 + Fare Difference</p>
+                                                    <hr>
+                                                    <br>
+                                                    <button class="btn waves-effect modal-action modal-close waves-light left green darken-4" (click)="addCArtSemiflex()">R {{semiflex}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="row">
+                                        <div class="col s12 m6">
+                                            <div class="card grey lighten-1">
+                                                <div class="card-content black-text">
+                                                    <span class="card-title">Fully-Flex</span>
+                                                    <hr>
+                                                    <p>1 Bag @ 23kg</p>
+                                                    <hr>
+                                                    <p>Refundable</p>
+                                                    <hr>
+                                                    <p>Traveller Meal</p>
+                                                    <hr>
+                                                    <p>Free & Unlimited + Fare Difference</p>
+                                                    <hr>
+                                                    <br>
+                                                    <button class="btn waves-effect modal-action modal-close waves-light left green darken-4" (click)="addCArtFullyflex()">R {{fullyflex}}</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </p>
+
+                        </div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+<div class="bto">
+    <button class="btn waves-effect waves-light left green darken-4" (click)="travellersdetails()">CONTINUE TO TRAVELLERS</button>
+</div>

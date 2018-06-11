@@ -1,0 +1,111 @@
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <a routerLink='/administrator' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+
+            <li><a routerLink='/manage-airport'>manage airport Departure</a></li>
+            <li><a routerLink='/manage-seat-selection'>manage Seat Selection</a></li>
+            <li><a routerLink='/manage-aircraft'>manage aircraft</a></li>
+            <li>
+                <div class="dropdowns">
+                    <button class="dropbtn">Manage</button>
+                    <div class="dropdown-contents">
+                        <a routerLink='/manage-preferred-class'>manage preferred class</a>
+                        <a routerLink='/manage-route'>manage airport arrival</a>
+                        <a routerLink='/manage-flight-extras'>manage Flight Extra</a>
+                        <a routerLink='/manage-flight-booking'>manage Flight Booking</a>
+                    </div>
+                </div>
+            </li>
+            <li><a (click)="Logout()">logout</a></li>
+
+
+        </ul>
+    </div>
+</nav>
+
+<section>
+    <h1>Manage Administrator</h1>
+    <div>
+        <div class="row">
+            <form class="col s12 white" #userRegistrationForm="ngForm">
+                <div class="row">
+                    <input type="hidden" name="AdministratorID" #AdministratorID="ngModel" [(ngModel)]="administratorservice.selectedAdministrator.AdministratorID" class="validate">
+                    <div class="input-field col s6">
+
+                        <input placeholder="Firstname" id="Firstname" type="text" name="Firstname" #Firstname="ngModel" [(ngModel)]="administratorservice.selectedAdministrator.Firstname" class="validate" required minlength="4">
+                        <label>First Name</label>
+                        <div class="validation-error" *ngIf="Firstname.invalid && Firstname.touched">
+                            <p>Input Atlist 4 characters!</p>
+                        </div>
+                    </div>
+                    <div class="input-field col s6">
+
+                        <input placeholder="Lastname" type="text" name="Lastname" #Lastname="ngModel" [(ngModel)]="administratorservice.selectedAdministrator.Lastname" class="validate" required minlength="4">
+                        <label for="Lastname">Last Name</label>
+                        <div class="validation-error" *ngIf="Lastname.invalid && Lastname.touched">
+                            <p>Input Atlist 4 characters!</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+
+                        <input placeholder="UserName" type="text" name="UserName" #UserName="ngModel" [(ngModel)]="administratorservice.selectedAdministrator.UserName" class="validate" required>
+                        <label for="UserName">UserName</label>
+
+                    </div>
+                    <div class="input-field col s6">
+
+                        <input placeholder="Password" type="text" name="Password" #Password="ngModel" [(ngModel)]="administratorservice.selectedAdministrator.Password" class="validate" required>
+                        <label data-error="Invalid phone Numbers" for="Password">Password</label>
+
+                    </div>
+                </div>
+                <button [disabled]="!userRegistrationForm.valid" class="btn waves-effect waves-light  blue-grey darken-4 " (click)="onSubmit(userRegistrationForm)" name="action">Insert
+                    <i class="material-icons right">send</i>
+            </button>
+                <td></td>
+                <button [disabled]="!userRegistrationForm.valid" class="btn waves-effect waves-light  blue-grey darken-4 " (click)="updatesubmit(userRegistrationForm)">Update
+                    <i class="material-icons right">send</i>
+            </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<table class="responsive-table">
+    <table>
+        <thead>
+            <tr>
+                <th>AdministratorId</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>UserName</th>
+                <th>Password</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let administrator of administratorservice.adminstratorList">
+                <td>{{administrator.AdministratorID}}</td>
+                <td>{{administrator.Firstname}}</td>
+                <td>{{administrator.Lastname}}</td>
+                <td>{{administrator.UserName}}</td>
+                <td>{{administrator.Password}}</td>
+                <td>
+                    <a class="btn" (click)="showForEdit(administrator)">
+                        <i class="tiny material-icons">create</i>
+                    </a>
+                </td>
+                <td>
+                    <a class="fg" (click)="onDelete(administrator.AdministratorID)">
+                        <i class="tiny material-icons">delete</i>
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</table>

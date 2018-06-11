@@ -1,0 +1,32 @@
+<div *ngIf="userClaims">
+    <h1>View & update account settings</h1>
+    <h2>Password</h2>
+    <p>Password tip: Have a minimum of 2 and a maximum of 10 characters. It should contain at least 1 capital letter, 1 lowercase letter and 1 number.</p>
+    <p>Username: {{userClaims.UserName}}</p>
+    <p class="p2">All fields are required unless marked as Optional</p>
+
+    <div class="row">
+        <!-- <div class="input-field col s5">
+            <input type="text" name="Password" [(ngModel)]="customer.Password" class="validate" required>
+            <label for="password">Old Password</label>
+            <div [hidden]="!passwordConfirmationFailed" class="alert alert-danger">Correct Password</div>
+        </div>-->
+    </div>
+    <form class="col s12 white" #customerRegistrationForm="ngForm" (ngSubmit)="onSubmit(customerRegistrationForm)">
+        <input type="hidden" name="CustomerID" [(ngModel)]="userClaims.CustomerID">
+        <input type="hidden" name="Firstname" [(ngModel)]="userClaims.Firstname">
+        <input type="hidden" name="Lastname" [(ngModel)]="userClaims.Lastname">
+        <input type="hidden" name="dateofbirth" [(ngModel)]="userClaims.dateofbirth">
+        <input type="hidden" name="Gender" [(ngModel)]="userClaims.Gender">
+        <input type="hidden" name="UserName" [(ngModel)]="userClaims.UserName">
+        <input type="hidden" name="Email" [(ngModel)]="userClaims.Email">
+        <input type="hidden" name="MobileNumbers" [(ngModel)]="userClaims.MobileNumbers">
+        <div class="row">
+            <div class="input-field col s6">
+                <input type="password" name="Password" [(ngModel)]="userClaims.Password">
+                <label data-error="invalid password" for="password">New Password</label>
+            </div>
+        </div>
+        <button class="btn waves-effect waves-light teal darken-4" type="submit" name="action">Update</button>
+    </form>
+</div>

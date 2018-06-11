@@ -1,0 +1,115 @@
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <a routerLink='/administrator' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+
+            <li><a routerLink='/manage-airport'>manage airport Departure</a></li>
+            <li><a routerLink='/manage-seat-selection'>manage Seat Selection</a></li>
+            <li><a routerLink='/manage-aircraft'>manage aircraft</a></li>
+            <li>
+                <div class="dropdowns">
+                    <button class="dropbtn">Manage</button>
+                    <div class="dropdown-contents">
+                        <a routerLink='/manage-route'>manage airport arrival</a>
+                        <a routerLink='/manage-flight-extras'>manage Flight Extra</a>
+                        <a routerLink='/manage-flight-booking'>manage Flight Booking</a>
+                        <a routerLink='/manage-flight-booking'>manage Flight Booking</a>
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<section>
+    <h1>Manage Preferred Class</h1>
+    <div class="row">
+        <form class="col s12 white" #userRegistrationForm="ngForm">
+            <div class="row">
+                <input type="hidden" name="PreferredClassID" #PreferredClassID="ngModel" [(ngModel)]="preferredclassservice.selectedClass.PreferredClassID" class="validate">
+                <input type="hidden" name="AirportID" #AirportID="ngModel" [(ngModel)]="preferredclassservice.selectedClass.AirportID" class="validate">
+                <div class="input-field col s6">
+                    <input placeholder="PreferredClassType" id="PreferredClassType" type="text" name="PreferredClassType" #PreferredClassType="ngModel" [(ngModel)]="preferredclassservice.selectedClass.PreferredClassType" class="validate" required minlength="4">
+                    <label>PreferredClass Type</label>
+                    <div class="validation-error" *ngIf="PreferredClassType.invalid && PreferredClassType.touched">
+                        <p>Input Atlist 4 characters!</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <ng2-dropdown>
+                            <ng2-dropdown-button>
+                                {{combo}}
+                            </ng2-dropdown-button>
+                            <ng2-dropdown-menu>
+                                <ng2-menu-item *ngFor="let airport of airportservice.airportlist" (click)="airportinfor(airport)">
+                                    {{airport.AirportName}}
+                                </ng2-menu-item>
+                            </ng2-dropdown-menu>
+                        </ng2-dropdown>
+                    </div>
+                </div>
+            </div>
+            <div class="input-field col s6 ">
+                <input placeholder="FlightType" id="FlightType" type="text" name="FlightType" #FlightType="ngModel" [(ngModel)]="preferredclassservice.selectedClass.FlightType" class="validate" required>
+                <label for="FlightType"> Flight Type</label>
+            </div>
+            <div class="input-field col s6 ">
+                <input placeholder="Price" id="Price" type="text" name="Price" #Price="ngModel" [(ngModel)]="preferredclassservice.selectedClass.Price" class="validate" required>
+                <label for="Price">Price</label>
+            </div>
+
+            <div class="input-field col s6 ">
+                <input placeholder="Quantity" id="Quantity" type="text" name="Quantity" #Quantity="ngModel" [(ngModel)]="preferredclassservice.selectedClass.Quantity" class="validate" required>
+                <label for="Quantity">Quantity</label>
+            </div>
+
+            <div class="input-field col s6 ">
+                <input placeholder="Total" id="Total" type="text" name="Total" #Total="ngModel" [(ngModel)]="preferredclassservice.selectedClass.Total" class="validate" required>
+                <label for="Total">Total</label>
+            </div>
+            <button [disabled]="!userRegistrationForm.valid" class="btn waves-effect waves-light  blue-grey darken-4 " (click)="onSubmit(userRegistrationForm)" name="action">Insert
+                  <i class="material-icons right">send</i>
+          </button>
+            <td></td>
+            <button [disabled]="!userRegistrationForm.valid" class="btn waves-effect waves-light  blue-grey darken-4 " (click)="updatesubmit(userRegistrationForm)">Update
+                  <i class="material-icons right">send</i>
+          </button>
+        </form>
+    </div>
+</section>
+
+<table class="responsive-table">
+    <table>
+        <thead>
+            <tr>
+                <th>PreferredClassID</th>
+                <th>AirportID</th>
+                <th>PreferredClass</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let preferredclass of preferredclassservice.preferredclasslist">
+                <td>{{preferredclass.PreferredClassID}}</td>
+                <td>{{preferredclass.AirportID}}</td>
+                <td>{{preferredclass.PreferredClassType}}</td>
+                <td>{{preferredclass.FlightType}}</td>
+                <td>{{preferredclass.Price}}</td>
+                <td>{{preferredclass.Quantity}}</td>
+                <td>{{preferredclass.Total}}</td>
+                <td>
+                    <a class="btn" (click)="showForEdit(preferredclass)">
+                        <i class="tiny material-icons">create</i>
+                    </a>
+                </td>
+                <td>
+                    <a class="fg" (click)="onDelete(preferredclass.PreferredClassID)">
+                        <i class="tiny material-icons">delete</i>
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</table>

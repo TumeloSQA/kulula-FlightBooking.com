@@ -1,0 +1,106 @@
+<nav>
+    <div class="nav-wrapper">
+        <a class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="center hide-on-med-and-down">
+
+            <li align="middle"><a><i class="Tiny material-icons ">assignment</i>Info</a></li>
+            <li align="middle"><a routerLink='/sign-in' routerLinkActive='active'><i class="Tiny material-icons">person</i>login</a></li>
+
+        </ul>
+    </div>
+</nav>
+
+<h5>.</h5>
+<div class="section">
+    <h1>Create your kulula ID in 3 easy steps!</h1>
+    <p class="p1"><i class="Tiny material-icons">person</i> Personal Details</p>
+    <p></p>
+    <h2>Why create a kulula ID profile?</h2>
+    <p>With a kulula ID your next flight booking will be made in just a few clicks. Your personal details are safe and we are PCI compliant, your details are in safe hands.</p>
+    <h3><i class="Tiny material-icons"> looks_one</i>Add your details</h3>
+    <p></p>
+    <div class="row">
+        <form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="onSubmit(userRegistrationForm)">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="Firstname" type="text" name="Firstname" #Firstname="ngModel" [(ngModel)]="user.Firstname" class="validate" required minlength="4">
+                    <label>First Name</label>
+                    <div class="validation-error" *ngIf="Firstname.invalid && Firstname.touched">
+                        <p>Input Atlist 4 characters!</p>
+                    </div>
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input type="text" name="Lastname" #Lastname="ngModel" [(ngModel)]="user.Lastname" class="validate" required minlength="4">
+                    <label for="Lastname">Last Name</label>
+                    <div class="validation-error" *ngIf="Lastname.invalid && Lastname.touched">
+                        <p>Input Atlist 4 characters!</p>
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">date_range</i>
+                    <input type="date" name="dateofbirth" #dateofbirth="ngModel" [(ngModel)]="user.dateofbirth" class="validate" [pattern]="dateofbirthPattern" required>
+                    <label for="dateofbirth">Date Of Birth</label>
+
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">call</i>
+                    <input type="text" name="MobileNumbers" #MobileNumbers="ngModel" [(ngModel)]="user.MobileNumbers" class="validate" required="11">
+                    <label data-error="Invalid phone Numbers" for="MobileNumbers">MobileNumbers</label>
+                    <div class="validation-error" *ngIf="MobileNumbers.invalid && MobileNumbers.touched">
+                        <p>input atlist 10 Numbers!</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-field col s6">
+                <i class="material-icons prefix">account_circle</i>
+                <input type="text" name="Gender" #Gender="ngModel" [(ngModel)]="user.Gender" [pattern]="GenderPattern" class="validate" required>
+                <label data-error="Required field" for="Gender">Enter Your Gender</label>
+                <div class="validation-error" *ngIf="Gender.invalid && Gender.touched">
+                    <p>input Male or Female</p>
+                </div>
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">mail</i>
+                <input type="Email" name="Email" [(ngModel)]="user.Email" class="validate" [pattern]="emailPattern" required>
+                <label data-error="Invalid Email" for="Email">Enter Your Email</label>
+            </div>
+
+            <p></p>
+            <p></p>
+            <p></p>
+            <h5>.</h5>
+            <h4><i class="Tiny material-icons"> looks_two</i>Account settings</h4>
+            <p>account info</p>
+            <div class="row">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input type="text" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" class="validate" required minlength="6">
+                        <label data-error="required field" for="UserName">User Name</label>
+                        <div class="validation-error" *ngIf="UserName.invalid && UserName.touched">
+                            <p>input Atlist 4 characters</p>
+                        </div>
+                    </div>
+                </div>
+                <p> Username tip: Use your email or create a User ID with a minimum of 2 characters
+                    <p></p>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input type="text" name="Password" #Password="ngModel" [(ngModel)]="user.Password" class="validate" required minlength="6">
+                            <label>Password</label>
+                            <div class="validation-error" *ngIf="Password.invalid && Password.touched">
+                                <p>input atlist 6 characters!</p>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            <button [disabled]="!Password.valid" class="btn waves-effect waves-light right" type="submit">sign-in
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+    </div>

@@ -1,0 +1,82 @@
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <a routerLink='/administrator' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+
+            <li><a routerLink='/manage-airport'>manage airport Departure</a></li>
+            <li><a routerLink='/manage-seat-selection'>manage Seat Selection</a></li>
+            <li><a routerLink='/manage-aircraft'>manage aircraft</a></li>
+            <li>
+                <div class="dropdowns">
+                    <button class="dropbtn">Manage</button>
+                    <div class="dropdown-contents">
+                        <a routerLink='/manage-preferred-class'>manage preferred class</a>
+                        <a routerLink='/manage-flight-extras'>manage Flight Extra</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<h1>Manage Flight Arrival</h1>
+<p>Please enter Arrival flight infomation below </p>
+<div>
+    <div class="row">
+        <form class="col s12" #RouteRegistrationForm="ngForm" (ngSubmit)="onSubmit(RouteRegistrationForm)">
+            <div class=" row ">
+                <input type="hidden" name="AirportName" #ArrivalID="ngModel" [(ngModel)]="routeservice.selectedroute.ArrivalID" class="validate" required>
+                <div class="input-field col s6 ">
+                    <input placeholder="AirportName" id="AirportName" type="text" name="AirportName" #AirportName="ngModel" [(ngModel)]="routeservice.selectedroute.AirportName" class="validate" required>
+                    <label for="AirportName"> RouteName</label>
+                </div>
+                <div class="input-field col s6 ">
+                    <input placeholder="ArrivalTime" id="ArrivalTime" type="time" name="ArrivalTime" #ArrivalTime="ngModel" [(ngModel)]="routeservice.selectedroute.ArrivalTime" class="validate" required>
+                    <label for="ArrivalTime"> ArrivalTime</label>
+                </div>
+                <div class="input-field col s6 ">
+                    <input placeholder="ArrivalDate" min="{{today}}" id="ArrivalDate" type="date" name="ArrivalDate" #ArrivalDate="ngModel" [(ngModel)]="routeservice.selectedroute.ArrivalDate" class="validate" required>
+                    <label for="ArrivalDate"> ArrivalDate</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Insert
+          <i class="material-icons right ">send</i>
+        </button>
+            <button class="btn waves-effect waves-light" (click)="updatesubmit(RouteRegistrationForm)">Update
+            <i class="material-icons right ">send</i>
+          </button>
+        </form>
+    </div>
+</div>
+
+<table class="responsive-table ">
+    <table>
+        <thead>
+            <tr>
+                <th>RouteID</th>
+                <th>Route name</th>
+                <th>Arrival Time</th>
+                <th>Arrival Date</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let route of routeservice.routelist">
+                <td>{{route.ArrivalID}}</td>
+                <td>{{route.AirportName}}</td>
+                <td>{{route.ArrivalTime}}</td>
+                <td>{{route.ArrivalDate}}</td>
+                <td>
+                    <a class="btn" (click)="showForEdit(route)">
+                        <i class="tiny material-icons ">create</i>
+                    </a>
+                </td>
+                <td>
+                    <a class="fg" (click)="onDelete(route.ArrivalID)">
+                        <i class="tiny material-icons ">delete</i>
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</table>

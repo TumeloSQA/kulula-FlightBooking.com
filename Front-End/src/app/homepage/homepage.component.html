@@ -1,0 +1,208 @@
+<nav>
+    <div class="nav-wrapper">
+        <a routerLink='/homepage' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a routerLink='/flight' routerLinkActive='active'><i class="Tiny material-icons">local_airport</i>flight</a></li>
+            <li><a routerLink='/car-hire' routerLinkActive='active'><i class="Tiny material-icons">time_to_leave</i>car hire</a></li>
+            <li><a routerLink='/hotel' routerLinkActive='active'><i class="Tiny material-icons">hotel</i>Hotel</a></li>
+            <li><a href="Holiday.html"><i class="Tiny material-icons">beach_access</i>Holiday</a></li>
+            <li><a routerLink='/profile' routerLinkActive='active'><i class="Tiny material-icons">border_color</i>Profile</a></li>
+            <li><a href="Info.html"><i class="Tiny material-icons">assignment</i>Info</a></li>
+            <li><a href="search.html"><i class="Tiny material-icons">search</i>Search</a></li>
+            <li><a (click)="Logout()">logout</a></li>
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<div class="slider">
+    <ul class="slides">
+        <li>
+            <img src="../../assets/images/pretoria.jpg">
+            <!-- random image -->
+            <div class="caption center-align">
+                <h3>EnJoy Fliying With Us</h3>
+
+            </div>
+        </li>
+        <li>
+            <img src="../../../assets/images/clouds.jpg">
+            <!-- random image -->
+            <div class="caption left-align">
+                <h3>EnJoy Fliying With Us</h3>
+                <h5 class="light grey-text text-lighten-3">Kulula Flights</h5>
+            </div>
+        </li>
+        <li>
+            <img src="../../../assets/images/Flight_above_the_clouds.jpg">
+            <!-- random image -->
+            <div class="caption right-align">
+                <h3>REnJoy Fliying With Us</h3>
+            </div>
+        </li>
+        <li>
+            <img src="../../../assets/images/airplane_sky_flight_clouds_height.jpg">
+            <!-- random image -->
+            <div class="caption center-align">
+                <h3>EnJoy Fliying With Us</h3>
+
+            </div>
+        </li>
+    </ul>
+</div>
+
+<ul class="collapsible">
+    <li>
+        <div class="collapsible-header"><i class="material-icons">local_airport</i>One-way Flight booking</div>
+        <div class="collapsible-body ">
+            <span>
+                 <form #userRegistrationForm="ngForm">  
+                <div class="row">
+                    <div class="row">
+                            <div class="input-field col s6">
+                                    <ng2-dropdown>
+                                        <ng2-dropdown-button>
+                                            {{combo}}
+                                        </ng2-dropdown-button>
+                                        <ng2-dropdown-menu>
+                                            <ng2-menu-item *ngFor="let airport of airportservice.airportlist" (click)="airportinfor(airport)">
+                                                {{airport.AirportName}}
+                                            </ng2-menu-item>
+                                        </ng2-dropdown-menu>
+                                    </ng2-dropdown>
+                                    
+                                    </div>
+
+                            <div class="input-field col s6">
+                                    <ng2-dropdown>
+                                            <ng2-dropdown-button>
+                                                {{combobox}}
+                                            </ng2-dropdown-button>
+                                            <ng2-dropdown-menu>
+                                                <ng2-menu-item  (click)="routeinfo(route)">
+                                                    {{time}}
+                                                </ng2-menu-item>
+                                            </ng2-dropdown-menu>
+                                     </ng2-dropdown>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                                <ng2-dropdown>
+                                        <ng2-dropdown-button>
+                                            {{preferred}}
+                                        </ng2-dropdown-button>
+                                        <ng2-dropdown-menu>
+                                            <ng2-menu-item *ngFor="let x of preferredclass" (click)="preferredClas(x)">
+                                               {{x}}
+                                            </ng2-menu-item>
+                                        </ng2-dropdown-menu>
+                                 </ng2-dropdown>
+
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="date" name="Departing" min="{{today}}" #dateofbirth="ngModel"  [(ngModel)]="user.dateofbirth"  class="validate" required minlength="4">
+                            <label for="Departing">Departing Date</label>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                            <div class="input-field col s6">
+                                <input type="number" name="from" #NumberOfTravellers="ngModel" [(ngModel)]="flightbooking.NumberOfTravellers" class="validate" required minlength="4">
+                                <label for="Number">Number Of Travellers</label>
+    
+                            </div>
+                    </div>
+                    <button [disabled]="!userRegistrationForm.valid" class="btn waves-effect waves-light btn-flat left" (click)="onSubmit(userRegistrationForm)">Make Booking
+                            <i class="material-icons left">send</i>
+                        </button>
+                </div>
+                </form>
+            </span>
+        </div>
+
+    </li>
+
+    <li>
+        <div class="collapsible-header"><i class="material-icons">local_airport</i>Return return flight booking</div>
+        <div class="collapsible-body white">
+            <span>
+                <div class="row">
+                    <div class="row">
+                            <div class="input-field col s6">
+                                    <ng2-dropdown>
+                                            <ng2-dropdown-button>
+                                                {{combo}}
+                                            </ng2-dropdown-button>
+                                            <ng2-dropdown-menu>
+                                                <ng2-menu-item *ngFor="let airport of airportservice.airportlist" (click)="airportinfor(airport)">
+                                                    {{airport.AirportName}}
+                                                </ng2-menu-item>
+                                            </ng2-dropdown-menu>
+                                        </ng2-dropdown>
+    
+                            </div>
+                            <div class="input-field col s6">
+                                    <ng2-dropdown>
+                                            <ng2-dropdown-button>
+                                                {{combobox}}
+                                            </ng2-dropdown-button>
+                                            <ng2-dropdown-menu>
+                                                <ng2-menu-item  (click)="routeinfo(route)">
+                                                    {{time}}
+                                                </ng2-menu-item>
+                                            </ng2-dropdown-menu>
+                                     </ng2-dropdown>
+    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input type="date" name="Departing" min="{{today}}" #dateofbirth="ngModel"  [(ngModel)]="user.dateofbirth" class="validate" required minlength="4">
+                            <label for="Departing">Departing</label>
+    
+                            </div>
+                            <div class="input-field col s6">
+                                <input type="date" name="Return" min="{{today}}" #ReturningDate="ngModel" [(ngModel)]="flightbooking.ReturningDate" class="validate" required>
+                                <label for="Return">Return</label>
+    
+                            </div>
+    
+                        </div>
+                        <div class="input-field col s6">
+                                <ng2-dropdown>
+                                        <ng2-dropdown-button>
+                                            {{preferred}}
+                                        </ng2-dropdown-button>
+                                        <ng2-dropdown-menu>
+                                            <ng2-menu-item *ngFor="let x of preferredclass" (click)="preferredClas(x)">
+                                               {{x}}
+                                            </ng2-menu-item>
+                                        </ng2-dropdown-menu>
+                                 </ng2-dropdown>
+                        </div>
+                        <div class="row">
+                                <div class="input-field col s6">
+                                    <input type="number" name="from" #NumberOfTravellers="ngModel" [(ngModel)]="flightbooking.NumberOfTravellers" class="validate" required minlength="4">
+                                    <label for="Number" >Number Of Travellers</label>
+        
+                                </div>
+                               
+                        </div>
+                        <button class="btn waves-effect waves-light btn-flat left"  (click)="onSubmit()">Make Booking
+                                <i class="material-icons left">send</i>
+                            </button>
+                    </div>
+
+            </span>
+        </div>
+    </li>
+
+</ul>

@@ -1,0 +1,56 @@
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <a routerLink='/administrator' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+
+            <li><a routerLink='/manage-airport'>manage airport Departure</a></li>
+            <li><a routerLink='/manage-seat-selection'>manage Seat Selection</a></li>
+            <li><a routerLink='/manage-aircraft'>manage aircraft</a></li>
+            <li>
+                <div class="dropdowns">
+                    <button class="dropbtn">Manage</button>
+                    <div class="dropdown-contents">
+                        <a routerLink='/manage-preferred-class'>manage preferred class</a>
+                        <a routerLink='/manage-route'>manage airport arrival</a>
+                        <a routerLink='/manage-flight-extras'>manage Flight Extra</a>
+                        <a routerLink='/manage-flight-booking'>manage Flight Booking</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<h1>manage Flight Booking</h1>
+<table class="responsive-table">
+    <table>
+        <thead>
+            <tr>
+                <th>FlightID</th>
+                <th>airportname</th>
+                <th>Number Of Travellers</th>
+                <th>SeatNumber</th>
+                <th>Total Fare</th>
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let flightbooking of flightbookingservice.flightbookinglist">
+                <td>{{flightbooking.FlightID}}</td>
+                <td>{{username}}</td>
+                <td>{{airportname}}</td>
+                <td>{{flightbooking.NumberOfTravellers}}</td>
+                <td>{{flightbooking.SeatNumber}}</td>
+                <td>{{flightbooking.TotalFare}}</td>
+
+                <td>
+                    <a class="fg" (click)="onDelete(flightbooking.FlightID)">
+                        <i class="tiny material-icons ">delete</i>
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</table>

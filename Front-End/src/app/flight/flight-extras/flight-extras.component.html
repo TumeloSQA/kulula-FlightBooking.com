@@ -1,0 +1,111 @@
+<nav *ngIf="userClaims">
+    <div class="nav-wrapper">
+        <a routerLink='/homepage' routerLinkActive='active' class="logo"><img class="ime" src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a><i class="Tiny material-icons">local_airport</i>new flight</a></li>
+            <li><a href="manage.html"><i class="Tiny material-icons">border_color</i>manage bookings</a></li>
+            <li><a href="Info.html"><i class="Tiny material-icons ">assignment</i>Info</a></li>
+            <li>Welcome {{userClaims.UserName}}</li>
+        </ul>
+    </div>
+</nav>
+<p>.</p>
+
+<div class="di">
+    <div class="bt">
+        <button class="btn waves-effect waves-light right green darken-4" type="submit">R {{CartTotalPrice}}
+  <i class="material-icons left">shopping_cart</i>
+</button>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <p class="pas">Departing Airport : {{airport.AirportName}} >> Arriving Airport : {{arrivalname}} || number of travellers : {{CartQuantity}}</p>
+        </div>
+        <div class="col s4">
+            <p class="pas">Departing Date : {{date}} </p>
+        </div>
+        <div class="col s6" *ngIf="flightbooking.ReturningDate">
+            <p class="pas">Returning Date : {{flightbooking.ReturningDate}}</p>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>Customise your flight(s) with these extras</h1>
+<br>
+<br>
+<br>
+<p class="pa">We've handpicked these flight extras for you to make your trip as smooth as possible. You'll thank us later.</p>
+<br>
+<br>
+<section class="da">
+    <table class="striped">
+        <tr>
+            <td>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card grey lighten-1">
+                            <div class="card-content black-text">
+                                <img class="bags" src="../../../assets/images/Flight_And_Bag_Cover.PNG" alt="">
+                                <span class="card-title center">Flight & bag cover</span>
+                                <p>Protect yourself from flight cancellation, missed flights and events, delays, lost baggage and more. Make sure you have the travel essentials covered.</p>
+                                <br>
+                                <p class="pase">Price: R{{Flightbagcover}}</p>
+                                <p class="pase">per traveller, per flight</p>
+                                <p class="center-align">
+                                    <button class="btn waves-effect waves-light center  blue-grey darken-2" (click)="updatecart1()">ADD Flight & bag cover</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card grey lighten-1">
+                            <div class="card-content black-text">
+                                <img class="bags" src="../../../assets/images/Extra_Bags.PNG" alt="">
+                                <span class="card-title center">Extra bags</span>
+                                <p>Avoid excess baggage or heavy bag charges at the airport. Buy an extra 20kg baggage allowance online and save 25%.</p>
+                                <br>
+                                <p class="pase">Price: R{{Extrabags}}</p>
+                                <p class="pase">per bag, per flight</p>
+                                <p class="center-align">
+                                    <button class="btn waves-effect waves-light center teal darken-3" (click)="updatecart2()">ADD EXTRAS BAGS</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="row">
+                    <div class="col s12 m6">
+                        <div class="card grey lighten-1">
+                            <div class="card-content black-text">
+                                <img class="bags" src="../../../assets/images/Slow_XS_Lounge.PNG" alt="">
+                                <span class="card-title center">SLOW XS Lounge</span>
+                                <p>Refuel, refresh, work and rest in this modern lounge with free Wi-Fi, cosy work & snooze spots, delicious treats and more.</p>
+                                <br>
+                                <p class="pase">Price: R{{SLOWXSLounge}}</p>
+                                <p class="pase">per person</p>
+                                <p class="center-align">
+                                    <button class="btn waves-effect waves-light center cyan darken-4" (click)="updatecart3()">ADD SLOW XS LOUNGE</button>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </td>
+
+        </tr>
+    </table>
+</section>
+
+<div class="bto">
+    <button class="btn waves-effect waves-light center teal darken-1" (click)="routers()">Continue To Payment</button>
+</div>

@@ -1,0 +1,49 @@
+<nav>
+    <div class="nav-wrapper">
+        <a routerLink='/homepage' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a><i class="Tiny material-icons">local_airport</i>new flight</a></li>
+            <li><a href="manage.html"><i class="Tiny material-icons">border_color</i>manage bookings</a></li>
+            <li><a href="Info.html"><i class="Tiny material-icons ">assignment</i>Info</a></li>
+            <!--<li>Welcome {{userClaims.UserName}}</li>-->
+        </ul>
+    </div>
+</nav>
+<br>
+<br>
+<section>
+    <div class="sect">
+        <h1><i class="material-icons">done</i> Thank you for choosing to fly with us! Your flight to {{arrivalname}} is booked. A summary of your flight information is below.</h1>
+    </div>
+    <button class="btn waves-effect waves-light left" (click)="print()">Print Ticket
+    </button>
+    <br>
+    <p class="para">Your trip details</p>
+    <div class="sect2">
+        <h2>flight ticket</h2>
+        <h3>{{userClaims.UserName}} flight confirmation Total Money Paid R{{CartTotalPrice}} </h3>
+        <p class="para2">{{date}} {{time}} Depart {{airport.AirportName}} <i class="material-icons">arrow_forward</i> {{arrivaltime}} Arrival {{arrivalname}}</p>
+        <p class="para2"></p>
+        <p class="para2">Travellers Details:</p>
+        <p class="para3">Details about you and your fellow travellers. Includes extras purchased, documents needed and seat selections.</p>
+        <div class="row">
+            <div class="col s4">
+                <p class="para3">{{userClaims.UserName}}</p>
+                <p class="para3" *ngFor="let travellers of travellersdetailsService.flightTravellersList">{{travellers.Firstname}} {{travellers.Lastname}}</p>
+            </div>
+            <div class="col s4">
+                <p class="para3" *ngFor="let cart of cartservice.cartlists">{{cart.SeatNumber}}</p>
+            </div>
+        </div>
+        <hr>
+        <p class="para3">Payment details</p>
+        <p class="para3"><img class="image1" src="assets\images\accepted_c22e0.png" alt="">{{payments}}: R{{CartTotalPrice}} </p>
+        <hr>
+        <p class="para3">Booking summary</p>
+        <p class="para3">Fares: R {{preferredclassamount}} </p>
+        <hr>
+        <p class="para3">Flight extras: R{{ToTalExtras}}</p>
+        <hr>
+        <p class="para3">Total Amount: R{{CartTotalPrice}}</p>
+    </div>
+</section>

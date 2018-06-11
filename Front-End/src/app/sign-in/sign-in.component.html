@@ -1,0 +1,54 @@
+<nav>
+    <div class="nav-wrapper">
+        <a class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down ">
+
+            <li><a href="Info.html"><i class="Tiny material-icons ">assignment</i>Info</a></li>
+            <li><a href="sign-up"><i class="Tiny material-icons">person</i>Register</a></li>
+
+        </ul>
+    </div>
+</nav>
+<h5>.</h5>
+<div class="valign-wrapper">
+    <div class="row">
+        <div class="col s12 m6">
+            <div class="card white darken-1 green-text">
+                <div class="card-content green-text">
+                    <h1 class="center-align">Sign-in </h1>
+                    <div class="row">
+                        <form class="col s12 white" #userRegistrationForm="ngForm" (ngSubmit)="OnSubmit(UserName.value, Password.value)">
+                            <div class="row">
+                                <div class="row">
+                                    <div class="input-field col s10">
+                                        <i class="material-icons prefix">perm_identity</i>
+                                        <input type="text" name="UserName" #UserName="ngModel" [(ngModel)]="user.UserName" [(ngModel)]="administrator.UserName" class="validate" required>
+                                        <label data-error="required field" for="UserName">User Name</label>
+                                        <div class="validation-error" *ngIf="UserName.invalid && UserName.touched">
+                                            <p>input Atlist 4 characters</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="input-field col s10">
+                                        <i class="material-icons prefix">vpn_key</i>
+                                        <input type="password" name="Password" #Password="ngModel" [(ngModel)]="user.Password" [(ngModel)]="administrator.Password" class="validate" placeholder="Password" required minlength="6">
+                                        <label>Password</label>
+                                        <div class="validation-error" *ngIf="Password.invalid && Password.touched">
+                                            <p>input atlist 6 characters!</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn waves-effect waves-light btn-medium left" type="submit">sign-in
+                                <i class="material-icons right">perm_identity</i>
+                            </button>
+                            <button routerLink='/sign-up' routerLinkActive='active' class="btn waves-effect waves-light btn-medium right" type="reset">Create Kulula Account
+                                    <i class="material-icons right">account_circle</i>
+                                </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

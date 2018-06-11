@@ -1,0 +1,31 @@
+<nav>
+    <div class="nav-wrapper">
+        <a routerLink='/homepage' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a routerLink='/flight' routerLinkActive='active'><i class="Tiny material-icons">local_airport</i>new flight</a></li>
+            <li><a routerLink='/car-hire' routerLinkActive='active'><i class="Tiny material-icons">time_to_leave</i>search car</a></li>
+            <li><a routerLink='/hotel' routerLinkActive='active'><i class="Tiny material-icons">hotel</i>Hotel</a></li>
+            <li><a href="manage.html"><i class="Tiny material-icons">border_color</i>manage bookings</a></li>
+            <li><a href="Info.html"><i class="Tiny material-icons">assignment</i>Info</a></li>
+
+            <!-- <li><a (click)="Logout()">logout</a></li>-->
+        </ul>
+    </div>
+</nav>
+<p>.</p>
+<section>
+    <h1>Your kulula ID profile details</h1>
+    <ul class="tabs tabs-fixed-width z-depth-1">
+        <li class="tab col s3">
+            <a routerLink="/personal-details" routerLinkActive='active'> <i class="material-icons prefix">perm_identity</i>Personal Details</a>
+        </li>
+        <li class="tab col s3">
+            <a routerLink="/account-settings" routerLinkActive='active'><i class="material-icons prefix">lock</i>Account Settings</a>
+        </li>
+
+    </ul>
+    <div>
+        <router-outlet></router-outlet>
+    </div>
+
+</section>

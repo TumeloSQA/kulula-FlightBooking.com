@@ -1,0 +1,141 @@
+<nav *ngIf="userClaims">
+    <div class="nav-wrapper">
+        <a routerLink='/homepage' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a><i class="Tiny material-icons">local_airport</i>new flight</a></li>
+            <li><a href="manage.html"><i class="Tiny material-icons">border_color</i>manage bookings</a></li>
+            <li><a href="Info.html"><i class="Tiny material-icons ">assignment</i>Info</a></li>
+            <li>Welcome {{userClaims.UserName}}</li>
+        </ul>
+    </div>
+</nav>
+<p>.</p>
+
+<div class="di">
+    <div class="bt">
+        <button class="btn waves-effect waves-light right green darken-4" type="submit">R {{CartTotalPrice}}
+<i class="material-icons left">shopping_cart</i>
+</button>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <p class="pas">Departing Airport : {{airport.AirportName}} >> Arriving Airport: {{arrivalname}} || number of travellers : {{flightbooking.NumberOfTravellers}}</p>
+        </div>
+        <div class="col s4">
+            <p class="pas">Departing Date : {{date}} </p>
+        </div>
+        <div class="col s6" *ngIf="flightbooking.ReturningDate">
+            <p class="pas">Returning Date : {{flightbooking.ReturningDate}}</p>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h1>Who Are You flying With?</h1>
+<br>
+<br>
+<br>
+<br>
+<br>
+<section>
+    <div class="row">
+        <form class="col s12" #travellersdetailsRegistrationForm="ngForm" (ngSubmit)="onSubmit(travellersdetailsRegistrationForm)">
+            <input type="hidden" name="TravellerID" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.TravellerID" class="validate">
+            <input type="hidden" name="CustomerID" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.CustomerID" class="validate">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+
+                    <input placeholder="Firstname" type="text" name="Firstname" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Firstname" class="validate" required minlength="4">
+                    <label data-error="invalid name" for="name">first name</label>
+
+
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input placeholder="Lastname" type="text" name="Lastname" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Lastname" class="validate" required minlength="4">
+                    <label data-error="input correct name" for="Lastname">Lastname</label>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">date_range</i>
+                    <input placeholder="dateofbirth" type="date" name="dateofbirth" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Dateofbirth" class="validate" [pattern]="dateofbirthPattern" required>
+                    <label>date of birth</label>
+
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">call</i>
+                    <input placeholder="MobileNumber" type="text" name="MobileNumber" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Mobilenumber" class="validate" required>
+                    <label data-error="Invalid phone Numbers" for="MobileNumbers">
+                  Mobile Numeber
+                </label>
+
+                </div>
+            </div>
+
+            <div class="input-field col s6">
+                <i class="material-icons prefix">accessibility</i>
+                <input placeholder="Gender" type="text" name="Gender" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Gender" [pattern]="GenderPattern" class="validate" required>
+                <label data-error="Required field" for="Gender">Gender</label>
+
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">mail</i>
+                <input placeholder="Email" type="text" name="Email" class="validate" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Email" [pattern]="emailPattern" required>
+                <label data-error="Invalid Email" for="Email">Enter Your Email</label>
+            </div>
+            <br>
+            <br>
+            <button [disabled]="flightbooking.NumberOfTravellers == 1" id="btnDisable" class="btn waves-effect waves-light">Submit</button>
+        </form>
+    </div>
+    <table class="responsive-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname </th>
+                    <th> Dateofbirth</th>
+                    <th>Gender</th>
+                    <th> Mobilenumber</th>
+                    <th> Email </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>{{userClaims.Firstname}}</td>
+                    <td>{{userClaims.Lastname}}</td>
+                    <td>{{userClaims.Dateofbirth}}</td>
+                    <td>{{userClaims.Gender}}</td>
+                    <td>{{userClaims.MobileNumbers}}</td>
+                    <td>{{userClaims.Email}}</td>
+                </tr>
+                <tr *ngFor="let flighttravellerdetail of travellersdetailsService.flightTravellersList ">
+                    <td>{{flighttravellerdetail.Firstname}}</td>
+                    <td>{{flighttravellerdetail.Lastname}}</td>
+                    <td>{{flighttravellerdetail.Dateofbirth}}</td>
+                    <td>{{flighttravellerdetail.Gender}}</td>
+                    <td>{{flighttravellerdetail.Mobilenumber}}</td>
+                    <td>{{flighttravellerdetail.Email}}</td>
+                    <td>
+                        <a class="btn" (click)="showForEdit(flighttravellerdetail)">
+                            <i class="tiny material-icons">create</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </table>
+</section>
+<div class="bto">
+    <button [disabled]="!flightbooking.NumberOfTravellers == 1" class="btn waves-effect waves-light width=400px left green darken-4" (click)="travellersdetails()">SEAT SELECTION
+    </button>
+</div>

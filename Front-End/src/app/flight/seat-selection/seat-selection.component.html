@@ -1,0 +1,393 @@
+<nav *ngIf="userClaims">
+    <div class="nav-wrapper">
+        <a routerLink='/homepage' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+            <li><a><i class="Tiny material-icons">local_airport</i>new flight</a></li>
+            <li><a href="manage.html"><i class="Tiny material-icons">border_color</i>manage bookings</a></li>
+            <li><a href="Info.html"><i class="Tiny material-icons ">assignment</i>Info</a></li>
+            <li>Welcome {{userClaims.UserName}}</li>
+        </ul>
+    </div>
+</nav>
+<p>.</p>
+
+<div class="di">
+    <div class="bt">
+        <button class="btn waves-effect waves-light right green darken-4" type="submit">R {{CartTotalPrice}}
+<i class="material-icons left">shopping_cart</i>
+</button>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <p class="pas">Departing Airport : {{airport.AirportName}} >> Arriving Airport : {{arrivalname}} || number of travellers : {{CartQuantity}}</p>
+        </div>
+        <div class="col s4">
+            <p class="pas">Departing Date : {{date}} </p>
+        </div>
+        <div class="col s6" *ngIf="flightbooking.ReturningDate">
+            <p class="pas">Returning Date : {{flightbooking.ReturningDate}}</p>
+        </div>
+    </div>
+</div>
+<p class="pa">From {{airport.AirportName}} to {{arrivalname}}</p>
+<div class="bto">
+    <button class="btn waves-effect waves-light right light-blue darken-3" (click)="routers()">Continue to flight Extras</button>
+</div>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<section>
+    <h1>SEAT SELECTION</h1>
+    <br>
+    <div class="row">
+        <p class="parag">Tavellers Details</p>
+        <div class="row">
+            <div class="col s4">
+                <p class="parag2">{{userClaims.UserName}} {{userClaims.Lastname}}</p>
+                <p class="parag2" *ngFor="let travellers of travellersdetailsService.flightTravellersList">{{travellers.Firstname}} {{travellers.Lastname}} </p>
+            </div>
+            <div class="col s4">
+                <p class="parag2" *ngFor="let cart of cartservice.cartlists">{{cart.SeatNumber}}</p>
+            </div>
+        </div>
+        <div class="col s6">
+            <h2>SEAT LEGEND</h2>
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s1">
+                        <button [disabled]="userClaims.UserName" class="btn   blue-grey darken-4"></button>
+                    </div>
+                    <div class="col s0">
+                        <p>Unavailable</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s1">
+                        <a class="btn  teal darken-4"></a>
+                    </div>
+                    <div class="col s0">
+                        <p>R{{standardBack}}.00 Standard(Back)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s1">
+                        <a class="btn  green darken-1"></a>
+                    </div>
+                    <div class="col s0">
+                        <p>R{{standardfont}}.00 Standard (Front)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s1">
+                        <a class="btn   blue-grey darken-4"></a>
+                    </div>
+                    <div class="col s0">
+                        <p>R{{stretchzone}}.00 Stretch Zone (Extra Legroom)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s1">
+                        <a class="btn  black"></a>
+                    </div>
+                    <div class="col s0">
+                        <p>R{{exitrow}}.00 Exist Row (Extra Legroom)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s12">
+                    <div class="col s1">
+                        <a class="btn  cyan darken-4"></a>
+                    </div>
+                    <div class="col s0">
+                        <p>R{{frontrow}}.00 Front Row (Extra Legroom)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sd col s6">
+            <h3>SELECT YOUR SEAT</h3>
+            <p>Boeing 737-800</p>
+            <br>
+
+            <div class="row">
+                <div class="col s5 ">
+
+                    <div class="row">
+                        <div class="col s2">
+                            <P>A</P>
+                        </div>
+                        <div class="col s2">
+                            <P>B</P>
+                        </div>
+                        <div class="col s2">
+                            <P>C</P>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[0].Quantity == 0" class="btn-small  cyan darken-4" id="1A" (click)="seatselection1A()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[1].Quantity == 0" class="btn-small  cyan darken-4" id="1B" (click)="seatselection1B()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[2].Quantity == 0" class="btn-small cyan darken-4" id="1C" (click)="seatselection1C()"></button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[3].Quantity == 0" class="btn green darken-1" id="2A" (click)="seatselection2A()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[4].Quantity == 0" class="btn green darken-1" id="2B" (click)="seatselection2B()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[5].Quantity == 0" class="btn green darken-1" id="2C" (click)="seatselection2C()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[9].Quantity == 0" class="btn green darken-1" id="3A" (click)="seatselection3A()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[10].Quantity == 0" class="btn green darken-1" id="3B" (click)="seatselection3B()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[9].Quantity == 0" class="btn green darken-1" id="3C" (click)=" seatselection3C()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[15].SeatNumber == 0" class="btn blue-grey darken-4" id="4A" (click)="seatselection4A()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[16].SeatNumber == 0" class="btn blue-grey darken-4" id="4B" (click)="seatselection4B()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[17].SeatNumber == 0" class="btn blue-grey darken-4" id="4C" (click)="seatselection4C()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[21].Quantity == 0" class="btn blue-grey darken-4" id="5A" (click)="seatselection5A()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[22].Quantity == 0" class="btn blue-grey darken-4" id="5B" (click)="seatselection5B()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[23].Quantity == 0" class="btn blue-grey darken-4" id="5C" (click)="seatselection5C()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[27].Quantity == 0" class="btn black" id="6A" (click)="seatselection6A()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[28].Quantity == 0" class="btn black" id="6B" (click)="seatselection6B()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[29].Quantity == 0" class="btn black" id="6C" (click)="seatselection6C()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[33].Quantity == 0" class="btn black" id="7A" (click)="seatselection7A()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[34].Quantity == 0" class="btn black" id="7B" (click)="seatselection7B()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[35].Quantity == 0" class="btn black" id="7C" (click)="seatselection7C()"></button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[39].Quantity == 0" class="btn teal darken-4" id="8A" (click)="seatselection8A()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[40].Quantity == 0" class="btn teal darken-4" id="8B" (click)="seatselection8B()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[41].Quantity == 0" class="btn teal darken-4" id="8C" (click)="seatselection8C()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[45].Quantity == 0" class="btn teal darken-4" id="9A" (click)="seatselection9A()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[46].Quantity == 0" class="btn teal darken-4" id="9B" (click)="seatselection9B()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="this.SeatSelectionArray[47].Quantity == 0" class="btn teal darken-4" id="9C" (click)="seatselection9C()"></button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col s2 ">
+
+                    <div class="row">
+                        <p class="cllo">.</p>
+                    </div>
+                    <div class="row">
+                        <p>1</p>
+                    </div>
+                    <div class="row">
+                        <p>2</p>
+                    </div>
+                    <div class="row">
+                        <p>3</p>
+                    </div>
+                    <div class="row">
+                        <p>4</p>
+                    </div>
+                    <div class="row">
+                        <p>5</p>
+                    </div>
+                    <div class="row">
+                        <p>6</p>
+                    </div>
+                    <div class="row">
+                        <p>7</p>
+                    </div>
+                    <div class="row">
+                        <p>8</p>
+                    </div>
+                    <div class="row">
+                        <p>9</p>
+                    </div>
+
+                </div>
+
+                <div class="col s5 ">
+
+                    <div class="row">
+                        <div class="col s2">
+                            <P>D</P>
+                        </div>
+                        <div class="col s2">
+                            <P>E</P>
+                        </div>
+                        <div class="col s2">
+                            <P>F</P>
+                        </div>
+                    </div>
+
+                    <p>.</p>
+                    <br>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[6].Quantity == 0" class="btn cyan darken-4" id="2D" (click)="seatselection2D()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[7].Quantity == 0" class="btn cyan darken-4" id="2E" (click)="seatselection2E()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[8].Quantity == 0" class="btn cyan darken-4" id="2F" (click)="seatselection2F()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[12].Quantity == 0" class="btn green darken-1" id="3D" (click)="seatselection3D()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[13].Quantity == 0" class="btn green darken-1" id="3E" (click)="seatselection3E()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[14].Quantity == 0" class="btn green darken-1" id="3F" (click)="seatselection3F()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[18].Quantity == 0" class="btn blue-grey darken-4" id="4D" (click)="seatselection4D()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[19].Quantity == 0" class="btn blue-grey darken-4" id="4E" (click)="seatselection4E()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[20].Quantity == 0" class="btn blue-grey darken-4" id="4F" (click)="seatselection4F()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[24].Quantity == 0" class="btn blue-grey darken-4" id="5D" (click)="seatselection5D()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[25].Quantity == 0" class="btn blue-grey darken-4" id="5E" (click)="seatselection5E()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[26].Quantity == 0" class="btn blue-grey darken-4" id="5F" (click)="seatselection5F()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[30].Quantity == 0" class="btn black" id="6D" (click)="seatselection6D()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[31].Quantity == 0" class="btn black" id="6E" (click)="seatselection6E()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[32].Quantity == 0" class="btn black" id="6F" (click)="seatselection6F()"></button>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[36].Quantity == 0" class="btn black" id="7D" (click)="seatselection7D()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[37].Quantity == 0" class="btn black" id="7E" (click)="seatselection7E()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[38].Quantity == 0" class="btn black" id="7F" (click)="seatselection7F()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[42].Quantity == 0" class="btn teal darken-4" id="8D" (click)="seatselection8D()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[43].Quantity == 0" class="btn teal darken-4" id="8E" (click)="seatselection8E()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[44].Quantity == 0" class="btn teal darken-4" id="8F" (click)="seatselection8F()"></button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[49].Quantity == 0" class="btn teal darken-4" id="9D" (click)="seatselection9D()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[50].Quantity == 0" class="btn teal darken-4" id="9E" (click)="seatselection9E()"></button>
+                        </div>
+                        <div class="col s2">
+                            <button [disabled]="SeatSelectionArray[51].Quantity == 0" class="btn teal darken-4" id="9F" (click)="seatselection9F()"></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn-large waves-effect waves-light right light-blue darken-3">Continue</button>
+</section>

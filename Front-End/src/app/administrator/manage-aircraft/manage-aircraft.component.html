@@ -1,0 +1,78 @@
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <a routerLink='/administrator' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+
+            <li><a routerLink='/manage-airport'>manage airport Departure</a></li>
+            <li><a routerLink='/manage-seat-selection'>manage Seat Selection</a></li>
+            <li>
+                <div class="dropdowns">
+                    <button class="dropbtn">Manage</button>
+                    <div class="dropdown-contents">
+                        <a routerLink='/manage-preferred-class'>manage preferred class</a>
+                        <a routerLink='/manage-route'>manage airport arrival</a>
+                        <a routerLink='/manage-flight-extras'>manage Flight Extra</a>
+                        <a routerLink='/manage-flight-booking'>manage Flight Booking</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<h1>Manage Aircraft</h1>
+<p>Please enter Aircrft Information</p>
+<div>
+    <div class="row">
+        <form class="col s12" #aircraftForm="ngForm" (ngSubmit)="onSubmit(aircraftForm)">
+            <div class=" row ">
+                <input type="hidden" name="AircraftID" #AircraftID="ngModel" [(ngModel)]="aicraftservice.selectedaircraft.AircraftID" class="validate" required>
+                <div class="input-field col s6 ">
+                    <input placeholder="AircraftName" id="AircraftName" type="text" name="AircraftName" #AircraftName="ngModel" [(ngModel)]="aicraftservice.selectedaircraft.AircraftName" class="validate" required>
+                    <label for="AircraftName"> Aircraft Name</label>
+                </div>
+                <div class="input-field col s6 ">
+                    <input placeholder="CarrierName" id="CarrierName" type="text" name="CarrierName" #CarrierName="ngModel" [(ngModel)]="aicraftservice.selectedaircraft.CarrierName" class="validate" required>
+                    <label for="CarrierName">Carrier Name</label>
+                </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Insert
+          <i class="material-icons right ">send</i>
+        </button>
+            <button [disabled]="!FlightFaresForm.valid" class="btn waves-effect waves-light  blue-grey darken-4 " (click)="updatesubmit(aircraftForm)">Update
+<i class="material-icons right">send</i>
+</button>
+        </form>
+    </div>
+</div>
+
+<table class="responsive-table ">
+    <table>
+        <thead>
+            <tr>
+                <th>Aircraft ID</th>
+                <th>Aircraft Name</th>
+                <th>Carrier Name</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let aircraft of aicraftservice.aircraftlist">
+                <td>{{aircraft.AircraftID}}</td>
+                <td>{{aircraft.AircraftName}}</td>
+                <td>{{aircraft.CarrierName}}</td>
+                <td>
+                    <a class="btn" (click)="showForEdit(aircraft)">
+                        <i class="tiny material-icons ">create</i>
+                    </a>
+                </td>
+                <td>
+                    <a class="fg" (click)="onDelete(aircraft.AircraftID)">
+                        <i class="tiny material-icons ">delete</i>
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</table>

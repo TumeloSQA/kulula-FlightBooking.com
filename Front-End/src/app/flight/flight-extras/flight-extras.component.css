@@ -1,0 +1,127 @@
+.ime {
+    width: 200px;
+    height: 30px;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    widows: 100%;
+    height: 50px;
+    box-sizing: border-box;
+    transition: .3s;
+    background: #66bb6a;
+}
+
+.bt {
+    width: 150px;
+    height: 50px;
+    position: fixed;
+    right: 0;
+}
+
+.di {
+    position: fixed;
+    /* background-color: rgba(0, 0, 0, 0.7);*/
+    -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 110px;
+    left: 0;
+    font-weight: bold;
+    opacity: 1;
+    background-color: #424242;
+}
+
+section {
+    position: fixed;
+    right: 0;
+    width: 250px;
+}
+
+button {
+    width: 200px;
+    height: 40px;
+    -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    position: fixed;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 24px;
+    font-weight: bold;
+    left: 0;
+}
+
+.pas {
+    color: white;
+}
+
+table {
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.7);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, .7);
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .7);
+    padding: 10px;
+    background: #e0e0e0;
+    z-index: -1;
+    /* hide shadow behind image */
+    -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+    width: 100%;
+    left: 0;
+    /* one half of the remaining 30% */
+    height: 150px;
+}
+
+.card {
+    align-content: center;
+    height: 400px;
+    width: 380px;
+    -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.9);
+    -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.9);
+}
+
+.card-title {
+    font-weight: bold;
+}
+
+.pa {
+    position: fixed;
+    color: black;
+    left: 0;
+}
+
+.da {
+    position: fixed;
+    left: 0;
+    width: 100%;
+    box-shadow: 0 0 60px #00695c, inset 0 0 60px #00695c;
+}
+
+.bto {
+    position: fixed;
+    bottom: 10%;
+    right: 0;
+}
+
+.pase {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+    font-size: 14px;
+    color: #757575;
+    text-align: center;
+}
+
+.bags {
+    width: 300px;
+    height: 130px;
+    -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.9);
+    -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.9);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.9);
+}

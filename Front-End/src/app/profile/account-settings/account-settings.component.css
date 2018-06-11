@@ -1,0 +1,24 @@
+h1 {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+h2 {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+span {
+    font-weight: bold;
+}
+
+.p2 {
+    color: #ffb74d;
+    font-size: 12px;
+}
+
+button {
+    -webkit-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+    -moz-box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.7);
+}

@@ -1,0 +1,114 @@
+<nav>
+    <div class="nav-wrapper blue-grey darken-1">
+        <a routerLink='/administrator' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+
+            <li><a routerLink='/manage-airport'>manage airport Departure</a></li>
+            <li><a routerLink='/manage-aircraft'>manage aircraft</a></li>
+            <li>
+                <div class="dropdowns">
+                    <button class="dropbtn">Manage</button>
+                    <div class="dropdown-contents">
+                        <a routerLink='/manage-preferred-class'>manage preferred class</a>
+                        <a routerLink='/manage-route'>manage airport arrival</a>
+                        <a routerLink='/manage-flight-extras'>manage Flight Extra</a>
+                        <a routerLink='/manage-flight-booking'>manage Flight Booking</a>
+
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<section>
+    <h1>Manage Seat Selection</h1>
+    <div>
+        <div class="row">
+            <form class="col s12" #SeatSelectionForm="ngForm">
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="SeatType" id="SeatType" type="text" name="SeatType" #SeatType="ngModel" [(ngModel)]="seatselectionservice.selectedseat.SeatType" class="validate" required minlength="4">
+                        <label>Seat Type </label>
+                        <div class="validation-error" *ngIf="SeatType.invalid && SeatType.touched">
+                            <p>Input Atlist 4 characters!</p>
+                        </div>
+                    </div>
+                    <div class="input-field col s6">
+
+                        <input placeholder="SeatNumber" type="text" name="SeatNumber" #SeatNumber="ngModel" [(ngModel)]="seatselectionservice.selectedseat.SeatNumber" class="validate" required>
+                        <label for="SeatNumber">Seat Number </label>
+                        <div class="validation-error" *ngIf="SeatNumber.invalid && SeatNumber.touched">
+                            <p>Input Atlist 4 characters!</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+
+                        <input placeholder="Price" type="text" name="Price" #Price="ngModel" [(ngModel)]="seatselectionservice.selectedseat.Price" class="validate" required>
+                        <label for="Price">Price</label>
+
+                    </div>
+                    <div class="input-field col s6">
+
+                        <input placeholder="Quantity" type="text" name="Quantity" #Quantity="ngModel" [(ngModel)]="seatselectionservice.selectedseat.Quantity" class="validate" required>
+                        <label data-error="invalid input" for="Quantity">Quantity</label>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+
+                        <input placeholder="Total" type="text" name="Total" #Total="ngModel" [(ngModel)]="seatselectionservice.selectedseat.Total" class="validate" required>
+                        <label data-error="invalid input" for="Total">Total</label>
+
+                    </div>
+                </div>
+
+                <button [disabled]="!SeatSelectionForm.valid" class="btn waves-effect waves-light  blue-grey darken-4 " (click)="onSubmit(SeatSelectionForm)">Insert
+                <i class="material-icons right">send</i>
+        </button>
+                <td></td>
+                <button [disabled]="!SeatSelectionForm.valid" class="btn waves-effect waves-light  blue-grey darken-4 " (click)="updatesubmit(SeatSelectionForm)">Update
+                <i class="material-icons right">send</i>
+        </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<table class="responsive-table">
+    <table>
+        <thead>
+            <tr>
+                <th>Seat Type</th>
+                <th>Seat Number</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let  seatselection of seatselectionservice.seatselectionlist">
+                <td>{{seatselection.SeatType}}</td>
+                <td>{{seatselection.SeatNumber}}</td>
+                <td>{{seatselection.Price}}</td>
+                <td>{{seatselection.Quantity}}</td>
+                <td>{{seatselection.Total}}</td>
+                <td>
+                    <a class="btn" (click)="showForEdit(seatselection)">
+                        <i class="tiny material-icons">create</i>
+                    </a>
+                </td>
+                <td>
+                    <a class="fg" (click)="onDelete(seatselection.SeatNumber)">
+                        <i class="tiny material-icons">delete</i>
+                    </a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</table>

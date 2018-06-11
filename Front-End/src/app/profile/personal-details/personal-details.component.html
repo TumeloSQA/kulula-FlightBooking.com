@@ -1,0 +1,65 @@
+<div *ngIf="userClaims">
+    <h1>HI {{userClaims.UserName}}, thanks for creating a profile with kulula.</h1>
+    <p class="p1"><i class="Tiny material-icons">person</i> Update Your Profile</p>
+    <table class="blue lighten-2">
+        <p><i class="material-icons prefix">lightbulb_outline</i>Profile Tip: Fill out your information as it appears on the government-issued identification that you use for travel.</p>
+    </table>
+    <p class="p2">All fields are required unless marked as Optional</p>
+
+
+
+    <div class="row">
+        <form class="col s12 white" #customerRegistrationForm="ngForm" (ngSubmit)="onSubmit(customerRegistrationForm)">
+            <input type="hidden" name="CustomerID" [(ngModel)]="userClaims.CustomerID">
+            <input type="hidden" name="Password" [(ngModel)]="userClaims.Password">
+            <input type="hidden" name="UserName" [(ngModel)]="userClaims.UserName">
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+
+                    <input placeholder="Firstname" type="text" name="Firstname" [(ngModel)]="userClaims.Firstname" class="validate" required minlength="4">
+                    <label data-error="invalid name" for="name">first name</label>
+
+
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input placeholder="Lastname" type="text" name="Lastname" [(ngModel)]="userClaims.Lastname" class="validate" required minlength="4">
+                    <label data-error="input correct name" for="Lastname">Lastname</label>
+
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">date_range</i>
+                    <input placeholder="dateofbirth" type="date" name="dateofbirth" [(ngModel)]="userClaims.dateofbirth" class="validate" [pattern]="dateofbirthPattern" required>
+                    <label>date of birth</label>
+
+                </div>
+                <div class="input-field col s6">
+                    <i class="material-icons prefix">call</i>
+                    <input placeholder="MobileNumbers" type="text" name="MobileNumbers" [(ngModel)]="userClaims.MobileNumbers" class="validate" required>
+                    <label data-error="Invalid phone Numbers" for="MobileNumbers">
+                  Mobile Numeber
+                </label>
+
+                </div>
+            </div>
+
+            <div class="input-field col s6">
+                <i class="material-icons prefix">accessibility</i>
+                <input placeholder="Gender" type="text" name="Gender" [(ngModel)]="userClaims.Gender" [pattern]="GenderPattern" class="validate" required>
+                <label data-error="Required field" for="Gender">Gender</label>
+
+            </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">mail</i>
+                <input placeholder="Email" type="text" name="Email" class="validate" [(ngModel)]="userClaims.Email" [pattern]="emailPattern" required>
+                <label data-error="Invalid Email" for="Email">Enter Your Email</label>
+            </div>
+
+            <button class="btn waves-effect waves-light" type="submit">Update</button>
+        </form>
+    </div>
+</div>

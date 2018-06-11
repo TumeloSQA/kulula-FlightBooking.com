@@ -1,0 +1,189 @@
+<nav *ngIf="userClaims">
+    <div class="nav-wrapper">
+        <a routerLink='/homepage' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
+        <ul class="right hide-on-med-and-down ">
+            <li><a routerLink='/flight' routerLinkActive='active'><i class="Tiny material-icons">local_airport</i>new flight</a></li>
+            <li><a routerLink='/profile' routerLinkActive='active'><i class="Tiny material-icons">border_color</i>manage bookings</a></li>
+            <li><a href="Info.html"><i class="Tiny material-icons ">assignment</i>Info</a></li>
+            <li><a>Welcome {{userClaims.UserName}}</a></li>
+        </ul>
+    </div>
+</nav>
+<p>.</p>
+<p></p>
+
+<body>
+
+    <h1 class="animated bounce">flight type</h1>
+    <ul class="collapsible">
+        <li>
+            <div class="collapsible-header"><i class="material-icons">local_airport</i>One-way Flight booking</div>
+            <div class="collapsible-body ">
+                <span>
+                 <form #userRegistrationForm="ngForm">  
+                <div class="row">
+                    <div class="row">
+                            <div class="input-field col s6">
+                                    <ng2-dropdown>
+                                        <ng2-dropdown-button>
+                                            {{combo}}
+                                        </ng2-dropdown-button>
+                                        <ng2-dropdown-menu>
+                                            <ng2-menu-item *ngFor="let airport of airportservice.airportlist" (click)="airportinfor(airport)">
+                                                {{airport.AirportName}}
+                                            </ng2-menu-item>
+                                        </ng2-dropdown-menu>
+                                    </ng2-dropdown>
+                                    
+                                    </div>
+
+                            <div class="input-field col s6">
+                                    <ng2-dropdown>
+                                            <ng2-dropdown-button>
+                                                {{combobox}}
+                                            </ng2-dropdown-button>
+                                            <ng2-dropdown-menu>
+                                                <ng2-menu-item  (click)="routeinfo(route)">
+                                                    {{time}}
+                                                </ng2-menu-item>
+                                            </ng2-dropdown-menu>
+                                     </ng2-dropdown>
+                            </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                                <ng2-dropdown>
+                                        <ng2-dropdown-button>
+                                            {{preferred}}
+                                        </ng2-dropdown-button>
+                                        <ng2-dropdown-menu>
+                                            <ng2-menu-item *ngFor="let x of preferredclass" (click)="preferredClas(x)">
+                                               {{x}}
+                                            </ng2-menu-item>
+                                        </ng2-dropdown-menu>
+                                 </ng2-dropdown>
+
+                        </div>
+                        <div class="input-field col s6">
+                            <input type="date" name="Departing" min="{{today}}" #dateofbirth="ngModel"  [(ngModel)]="user.dateofbirth"  class="validate" required minlength="4">
+                            <label for="Departing">Departing Date</label>
+
+                        </div>
+
+                    </div>
+                    <div class="row">
+                            <div class="input-field col s6">
+                                <input type="number" name="from" #NumberOfTravellers="ngModel" [(ngModel)]="flightbooking.NumberOfTravellers" class="validate" required minlength="4">
+                                <label for="Number">Number Of Travellers</label>
+    
+                            </div>
+                    </div>
+                    <button [disabled]="!userRegistrationForm.valid" class="btn waves-effect waves-light btn-flat left" (click)="onSubmit(userRegistrationForm)">Make Booking
+                            <i class="material-icons left">send</i>
+                        </button>
+                </div>
+                </form>
+            </span>
+            </div>
+
+        </li>
+
+        <li>
+            <div class="collapsible-header"><i class="material-icons">local_airport</i>Return return flight booking</div>
+            <div class="collapsible-body white">
+                <span>
+                <div class="row">
+                    <div class="row">
+                            <div class="input-field col s6">
+                                    <ng2-dropdown>
+                                            <ng2-dropdown-button>
+                                                {{combo}}
+                                            </ng2-dropdown-button>
+                                            <ng2-dropdown-menu>
+                                                <ng2-menu-item *ngFor="let airport of airportservice.airportlist" (click)="airportinfor(airport)">
+                                                    {{airport.AirportName}}
+                                                </ng2-menu-item>
+                                            </ng2-dropdown-menu>
+                                        </ng2-dropdown>
+    
+                            </div>
+                            <div class="input-field col s6">
+                                    <ng2-dropdown>
+                                            <ng2-dropdown-button>
+                                                {{combobox}}
+                                            </ng2-dropdown-button>
+                                            <ng2-dropdown-menu>
+                                                <ng2-menu-item  (click)="routeinfo(route)">
+                                                    {{time}}
+                                                </ng2-menu-item>
+                                            </ng2-dropdown-menu>
+                                     </ng2-dropdown>
+    
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <input type="date" name="Departing" min="{{today}}" #dateofbirth="ngModel"  [(ngModel)]="user.dateofbirth" class="validate" required minlength="4">
+                            <label for="Departing">Departing</label>
+    
+                            </div>
+                            <div class="input-field col s6">
+                                <input type="date" name="Return" min="{{today}}" #ReturningDate="ngModel" [(ngModel)]="flightbooking.ReturningDate" class="validate" required>
+                                <label for="Return">Return</label>
+    
+                            </div>
+    
+                        </div>
+                        <div class="input-field col s6">
+                                <ng2-dropdown>
+                                        <ng2-dropdown-button>
+                                            {{preferred}}
+                                        </ng2-dropdown-button>
+                                        <ng2-dropdown-menu>
+                                            <ng2-menu-item *ngFor="let x of preferredclass" (click)="preferredClas(x)">
+                                               {{x}}
+                                            </ng2-menu-item>
+                                        </ng2-dropdown-menu>
+                                 </ng2-dropdown>
+                        </div>
+                        <div class="row">
+                                <div class="input-field col s6">
+                                    <input type="number" name="from" #NumberOfTravellers="ngModel" [(ngModel)]="flightbooking.NumberOfTravellers" class="validate" required minlength="4">
+                                    <label for="Number" >Number Of Travellers</label>
+        
+                                </div>
+                               
+                        </div>
+                        <button class="btn waves-effect waves-light btn-flat left"  (click)="onSubmit()">Make Booking
+                                <i class="material-icons left">send</i>
+                            </button>
+                    </div>
+
+            </span>
+            </div>
+        </li>
+
+    </ul>
+
+    <section id="section-1" class="animated slideInDown bg-white p-5 my-3">
+        <h1 class="animated bounce">Don’t forget to customise your flight </h1>
+        <p>We've handpicked these flight extras for you to make your trip as smooth as possible. Extras are available at time of booking or through manage my booking.</p>
+        <table>
+            <tr>
+                <td><img src="assets\images\extra-bags.jpg">
+                    <h2>Add extra bags & save 25%</h2>
+                    <p>Avoid excess baggage or heavy bag charges at the airport. Buy an extra 20kg baggage allowance online and save 25%.</p>
+                </td>
+
+                <td><img src="assets\images\pre-paid-seat.jpg">
+                    <h2>Pre-paid seats</h2>
+                    <p>When booking your flight, secure your seat ahead of time to get that extra legroom, quick exit, window seat or to sit with family and friends.</p>
+                </td>
+                <td><img src="assets\images\insurance.jpg">
+                    <h2>Flight and bag insurance</h2>
+                    <p>Travel is about experiences, so make sure you are protected from the bad ones. Cover yourself, your baggage and valuables against loss, damage, delay or theft.</p>
+                </td>
+            </tr>
+        </table>
+    </section>
+</body>
