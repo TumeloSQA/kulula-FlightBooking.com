@@ -188,7 +188,7 @@ updatecart1(){
     SeatNumber: null,
     PreferredClassID: this.cartList[0].PreferredClassID,
     ExtraID : this.flightExtrelist2[0].ExtraID,
-    Totalprice: this.cartList[0].Quantity * (+this.Flightbagcover) + (+this.cartList[0].PreferredClassID),
+    Totalprice: this.cartList[0].Quantity * (+this.Flightbagcover) + (+this.cartList[0].Totalprice),
     Quantity: this.cartList[0].Quantity
   }
 this.cartservice.PutCart(this.cart.CartID,this.cart).subscribe(data =>{
@@ -204,7 +204,7 @@ updatecart2(){
     SeatNumber: null,
     PreferredClassID: this.cartList[0].PreferredClassID,
     ExtraID : this.flightExtrelist2[1].ExtraID,
-    Totalprice: this.cartList[0].Quantity * (+this.Extrabags) + (+this.cartList[0].PreferredClassID),
+    Totalprice: this.cartList[0].Quantity * (+this.Extrabags) + (+this.cartList[0].Totalprice),
     Quantity: this.cartList[0].Quantity
   }
 this.cartservice.PutCart(this.cart.CartID,this.cart).subscribe(data =>{
@@ -220,7 +220,7 @@ updatecart3(){
     SeatNumber:null,
     PreferredClassID: this.cartList[0].PreferredClassID,
     ExtraID : this.flightExtrelist2[2].ExtraID,
-    Totalprice:this.cartList[0].Quantity * (+this.SLOWXSLounge) + (+this.cartList[0].PreferredClassID),
+    Totalprice:this.cartList[0].Quantity * (+this.SLOWXSLounge) + (+this.cartList[0].Totalprice),
     Quantity: this.cartList[0].Quantity
   }
 this.cartservice.PutCart(this.cart.CartID,this.cart).subscribe(data =>{
