@@ -225,6 +225,13 @@ getprefferedClass(){
 
 print(){
   window.print();
+  for(var x =0;x < this.arr1Length; x++){
+ return this.cartservice.DeleteCart(this.cartList[x].CartID).subscribe(x =>{
+  this.cartservice.Getcartlist();
+  this.cartservice.getspecifiedCart();
+  console.log('Deleted');
+ })
+  }
 }
 //  @ViewChild('content') content : ElementRef;
 
