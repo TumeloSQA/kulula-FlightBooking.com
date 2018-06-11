@@ -51,8 +51,8 @@
         <p class="parag">Tavellers Details</p>
         <div class="row">
             <div class="col s4">
-                <p class="parag2">{{userClaims.UserName}} {{userClaims.Lastname}}</p>
-                <p class="parag2" *ngFor="let travellers of travellersdetailsService.flightTravellersList">{{travellers.Firstname}} {{travellers.Lastname}} </p>
+                <p class="parag2">{{userClaims.UserName}}</p>
+                <p class="parag2" *ngFor="let travellers of travellersdetailsService.flightTravellersList">{{travellersdetails}} {{travellersDetailssurnames()}} </p>
             </div>
             <div class="col s4">
                 <p class="parag2" *ngFor="let cart of cartservice.cartlists">{{cart.SeatNumber}}</p>
