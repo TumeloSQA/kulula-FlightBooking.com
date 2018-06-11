@@ -51,6 +51,7 @@ date : string;
 arrivalname: string;
 routelist : Array<Route> =[];
 airportlist:Array<Airport> = [];
+travellersdetails:string;
   constructor(private seatselectionservice : SeatSelectionService,private UserService : UserService,private router : Router,private toast : ToastrService,private preferredclassservice : PreferredClassService,public cartservice : CartService, public travellersdetailsService : FlightTravellerDetailService,private airportservice: AirportService,private routeservice : RouteService) { }
 
   ngOnInit() {
@@ -88,6 +89,17 @@ this.exitrow = this.getspecifiedExitRow();
 this.frontrow = this.getspecifiedFrontRow();
 }
   })
+this.travellersdetailsService.GetspecifiedFlightTravellerDetail();
+this.travellersdetailsService.getFlightTravellersDetailsList();
+
+this.travellersdetailsService.specifiedflightTraveller.subscribe((classtype:Array<FlightTravellerDetail>)=>{
+  this.specifiedflighttravellerdetail = classtype;
+  if(classtype.length > 0){
+    this.arr1Length = classtype.length;
+    this.travellersdetails = this. travellersDetails();
+  }
+  
+})
 
   this.airportservice.getAirpot();
   this.airportservice.getspecifiedAirport();
@@ -179,6 +191,22 @@ this.frontrow = this.getspecifiedFrontRow();
        }
     
       }
+      travellersDetails(){
+        for(var x =0;x < this.arr1Length; x++){
+          if( this.specifiedflighttravellerdetail[x].CustomerID == +localStorage.getItem("CustomerID")){
+            return  this.specifiedflighttravellerdetail[x].Firstname;
+           
+          }
+      }
+    }
+    travellersDetailssurnames(){
+      for(var x =0;x < this.arr1Length; x++){
+        if( this.specifiedflighttravellerdetail[x].CustomerID == +localStorage.getItem("CustomerID")){
+          return  this.specifiedflighttravellerdetail[x].Lastname;
+         
+        }
+    }
+  }
    /* getCartQuantity(){
       for(var x =0;x < this.arr1Length; x++ ){
     if(this.cartList[x].CartID == 1){
