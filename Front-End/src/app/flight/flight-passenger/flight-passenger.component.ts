@@ -45,7 +45,9 @@ export class FlightPassengerComponent implements OnInit {
  dateofbirthPattern="yyyy/mm/day";
  date : string;
  arrivalname: string;
- 
+ specifiedflighttravellerdetail :Array<FlightTravellerDetail> =[]
+ travellersdetails1 : string;
+
   constructor(private UserService : UserService,private router : Router,private toast : ToastrService,private preferredclassservice : PreferredClassService,private cartservice : CartService, public travellersdetailsService : FlightTravellerDetailService,private airportservice: AirportService,private routeservice : RouteService) { }
 
   ngOnInit() {
@@ -84,6 +86,20 @@ this.routeservice.specifiedroute.subscribe((classtype:Array<Route>)=>{
     this.arrivalname = this.getArrival()
   }
 })
+
+
+this.travellersdetailsService.GetspecifiedFlightTravellerDetail();
+this.travellersdetailsService.getFlightTravellersDetailsList();
+
+this.travellersdetailsService.specifiedflightTraveller.subscribe((classtype:Array<FlightTravellerDetail>)=>{
+  this.specifiedflighttravellerdetail = classtype;
+  if(classtype.length > 0){
+    this.arr1Length = classtype.length;
+    this.travellersdetails1 = this.travellersDetails();
+  }
+  
+})
+
 }
   resetForm(form? : NgForm)
   {
@@ -152,6 +168,53 @@ this.routeservice.specifiedroute.subscribe((classtype:Array<Route>)=>{
         }
        }
     }
+    travellersDetails(){
+      for(var x =0;x < this.arr1Length; x++){
+        if( this.specifiedflighttravellerdetail[x].CustomerID == +localStorage.getItem("CustomerID")){
+          return  this.specifiedflighttravellerdetail[x].Firstname;
+         
+        }
+    }
+  }
+  travellersDetailssurnames(){
+    for(var x =0;x < this.arr1Length; x++){
+      if( this.specifiedflighttravellerdetail[x].CustomerID == +localStorage.getItem("CustomerID")){
+        return  this.specifiedflighttravellerdetail[x].Lastname;
+       
+      }
+  }
+}
+travellersDetailsDateofbirth(){
+  for(var x =0;x < this.arr1Length; x++){
+    if( this.specifiedflighttravellerdetail[x].CustomerID == +localStorage.getItem("CustomerID")){
+      return  this.specifiedflighttravellerdetail[x].Dateofbirth;
+     
+    }
+}
+}
+
+travellersDetailsGender(){
+  for(var x =0;x < this.arr1Length; x++){
+    if( this.specifiedflighttravellerdetail[x].CustomerID == +localStorage.getItem("CustomerID")){
+      return  this.specifiedflighttravellerdetail[x].Gender;
+    }
+}
+}
+travellersDetailsMobileNumbers(){
+  for(var x =0;x < this.arr1Length; x++){
+    if( this.specifiedflighttravellerdetail[x].CustomerID == +localStorage.getItem("CustomerID")){
+      return  this.specifiedflighttravellerdetail[x].Mobilenumber;
+    }
+}
+}
+travellersDetailsEmail(){
+  for(var x =0;x < this.arr1Length; x++){
+    if( this.specifiedflighttravellerdetail[x].CustomerID == +localStorage.getItem("CustomerID")){
+      return  this.specifiedflighttravellerdetail[x].Email;
+    }
+}
+}
+
     showForEdit(travellersdetails ){
       this.travellersdetailsService.selectedFlightTravellers = Object.assign({}, travellersdetails);
     }
@@ -178,5 +241,12 @@ this.routeservice.specifiedroute.subscribe((classtype:Array<Route>)=>{
        travellersdetails(){
          this.router.navigate(['/seat-selection'])
        }
-
+       Update(form : NgForm){
+       this.travellersdetailsService.PutFlightTravellerDetails(form.value.TravellerID, form.value)
+       .subscribe(data => {
+         this.resetForm(form);
+         this.toast.info('Record Updated Successfully');
+         location.reload();
+       })
+      }
 }
