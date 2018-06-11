@@ -43,7 +43,7 @@
 <br>
 <section>
     <div class="row">
-        <form class="col s12" #travellersdetailsRegistrationForm="ngForm" (ngSubmit)="onSubmit(travellersdetailsRegistrationForm)">
+        <form class="col s12" #travellersdetailsRegistrationForm="ngForm">
             <input type="hidden" name="TravellerID" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.TravellerID" class="validate">
             <input type="hidden" name="CustomerID" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.CustomerID" class="validate">
             <div class="row">
@@ -93,7 +93,8 @@
             </div>
             <br>
             <br>
-            <button [disabled]="flightbooking.NumberOfTravellers == 1" id="btnDisable" class="btn waves-effect waves-light">Submit</button>
+            <button [disabled]="flightbooking.NumberOfTravellers == 1" id="btnDisable" class="btn waves-effect waves-light" (click)="onSubmit(travellersdetailsRegistrationForm)">Submit</button>
+            <button class="btn waves-effect waves-light" (click)="Update(travellersdetailsRegistrationForm)">Update</button>
         </form>
     </div>
     <table class="responsive-table">
@@ -119,12 +120,12 @@
                     <td>{{userClaims.Email}}</td>
                 </tr>
                 <tr *ngFor="let flighttravellerdetail of travellersdetailsService.flightTravellersList ">
-                    <td>{{flighttravellerdetail.Firstname}}</td>
-                    <td>{{flighttravellerdetail.Lastname}}</td>
-                    <td>{{flighttravellerdetail.Dateofbirth}}</td>
-                    <td>{{flighttravellerdetail.Gender}}</td>
-                    <td>{{flighttravellerdetail.Mobilenumber}}</td>
-                    <td>{{flighttravellerdetail.Email}}</td>
+                    <td>{{travellersdetails1}}</td>
+                    <td>{{ travellersDetailssurnames()}}</td>
+                    <td>{{travellersDetailsDateofbirth()}}</td>
+                    <td>{{travellersDetailsGender()}}</td>
+                    <td>{{travellersDetailsMobileNumbers()}}</td>
+                    <td>{{travellersDetailsEmail()}}</td>
                     <td>
                         <a class="btn" (click)="showForEdit(flighttravellerdetail)">
                             <i class="tiny material-icons">create</i>
