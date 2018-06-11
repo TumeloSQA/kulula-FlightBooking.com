@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="57da65446b524ef5854c4e9a077699e7" Name="Diagram1" ZoomLevel="71">
+        <EntityTypeShape EntityType="kulula2Model.User" Width="1.5" PointX="6.375" PointY="1.25" />
+        <EntityTypeShape EntityType="kulula2Model.Administrator" Width="1.5" PointX="1.375" PointY="2.625" />
+        <EntityTypeShape EntityType="kulula2Model.FlightExtra" Width="1.5" PointX="10" PointY="8.25" />
+        <EntityTypeShape EntityType="kulula2Model.SeatSelection" Width="1.5" PointX="11" PointY="4.625" />
+        <EntityTypeShape EntityType="kulula2Model.CreditCard" Width="1.5" PointX="7.875" PointY="16.75" />
+        <EntityTypeShape EntityType="kulula2Model.InternetPaymentSID" Width="1.5" PointX="4.375" PointY="16.75" />
+        <EntityTypeShape EntityType="kulula2Model.Payment" Width="1.5" PointX="5.75" PointY="14.125" />
+        <AssociationConnector Association="kulula2Model.FK_CreditCard_Payments" />
+        <AssociationConnector Association="kulula2Model.FK_InternetPaymentSID_Payments" />
+        <AssociationConnector Association="kulula2Model.FK_Payments_User" />
+        <EntityTypeShape EntityType="kulula2Model.Aircraft" Width="1.5" PointX="0.5" PointY="7.125" />
+        <EntityTypeShape EntityType="kulula2Model.Flight_Departure" Width="1.5" PointX="2.5" PointY="9" />
+        <EntityTypeShape EntityType="kulula2Model.FlightArrival" Width="1.5" PointX="0.75" PointY="12.5" />
+        <AssociationConnector Association="kulula2Model.FK_Flight_Departure_Aircraft" />
+        <AssociationConnector Association="kulula2Model.FK_Flight_Departure_FlightArrival" />
+        <EntityTypeShape EntityType="kulula2Model.PreferredClass" Width="1.5" PointX="10.25" PointY="12.875" />
+        <AssociationConnector Association="kulula2Model.FK_PreferredClass_Flight_Departure" />
+        <EntityTypeShape EntityType="kulula2Model.FlightTravellerDetail" Width="1.5" PointX="4.875" PointY="8.125" />
+        <AssociationConnector Association="kulula2Model.FK_FlightTravellerDetails_SeatSelection" />
+        <AssociationConnector Association="kulula2Model.FK_FlightTravellerDetails_User" />
+        <EntityTypeShape EntityType="kulula2Model.Cart" Width="1.5" PointX="13.25" PointY="8.75" />
+        <AssociationConnector Association="kulula2Model.FK_Cart_FlightExtras" />
+        <AssociationConnector Association="kulula2Model.FK_Cart_PreferredClass" />
+        <AssociationConnector Association="kulula2Model.FK_Cart_SeatSelection" />
+        <EntityTypeShape EntityType="kulula2Model.FlightBooking" Width="1.5" PointX="7.75" PointY="8.125" />
+        <AssociationConnector Association="kulula2Model.FK_FlightBooking_Flight_Departure" />
+        <AssociationConnector Association="kulula2Model.FK_FlightBooking_FlightExtras" />
+        <AssociationConnector Association="kulula2Model.FK_FlightBooking_SeatSelection" />
+        <AssociationConnector Association="kulula2Model.FK_FlightBooking_User" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

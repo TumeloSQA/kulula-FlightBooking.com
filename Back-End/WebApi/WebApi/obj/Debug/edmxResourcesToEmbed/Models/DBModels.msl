@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="kulula2ModelStoreContainer" CdmEntityContainer="DBModel">
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="kulula2Model.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="MobileNumbers" ColumnName="MobileNumbers" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="dateofbirth" ColumnName="dateofbirth" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Administrators">
+      <EntityTypeMapping TypeName="kulula2Model.Administrator">
+        <MappingFragment StoreEntitySet="Administrator">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="AdministratorID" ColumnName="AdministratorID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FlightExtras">
+      <EntityTypeMapping TypeName="kulula2Model.FlightExtra">
+        <MappingFragment StoreEntitySet="FlightExtras">
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="FlightextraType" ColumnName="FlightextraType" />
+          <ScalarProperty Name="ExtraID" ColumnName="ExtraID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SeatSelections">
+      <EntityTypeMapping TypeName="kulula2Model.SeatSelection">
+        <MappingFragment StoreEntitySet="SeatSelection">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+          <ScalarProperty Name="SeatType" ColumnName="SeatType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CreditCards">
+      <EntityTypeMapping TypeName="kulula2Model.CreditCard">
+        <MappingFragment StoreEntitySet="CreditCard">
+          <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Cvv" ColumnName="Cvv" />
+          <ScalarProperty Name="ExpirationDate" ColumnName="ExpirationDate" />
+          <ScalarProperty Name="Cardname" ColumnName="Cardname" />
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="CreditID" ColumnName="CreditID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InternetPaymentSIDs">
+      <EntityTypeMapping TypeName="kulula2Model.InternetPaymentSID">
+        <MappingFragment StoreEntitySet="InternetPaymentSID">
+          <ScalarProperty Name="CardNumber" ColumnName="CardNumber" />
+          <ScalarProperty Name="BranchName" ColumnName="BranchName" />
+          <ScalarProperty Name="BranchCode" ColumnName="BranchCode" />
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+          <ScalarProperty Name="InternetPaymentID" ColumnName="InternetPaymentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Payments">
+      <EntityTypeMapping TypeName="kulula2Model.Payment">
+        <MappingFragment StoreEntitySet="Payments">
+          <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+          <ScalarProperty Name="PaymentType" ColumnName="PaymentType" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="PaymentID" ColumnName="PaymentID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Aircraft">
+      <EntityTypeMapping TypeName="kulula2Model.Aircraft">
+        <MappingFragment StoreEntitySet="Aircraft">
+          <ScalarProperty Name="CarrierName" ColumnName="CarrierName" />
+          <ScalarProperty Name="AircraftName" ColumnName="AircraftName" />
+          <ScalarProperty Name="AircraftID" ColumnName="AircraftID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Flight_Departures">
+      <EntityTypeMapping TypeName="kulula2Model.Flight_Departure">
+        <MappingFragment StoreEntitySet="Flight Departure">
+          <ScalarProperty Name="DepartingDate" ColumnName="DepartingDate" />
+          <ScalarProperty Name="DepartingTime" ColumnName="DepartingTime" />
+          <ScalarProperty Name="AirportName" ColumnName="AirportName" />
+          <ScalarProperty Name="ArrivalID" ColumnName="ArrivalID" />
+          <ScalarProperty Name="AircraftID" ColumnName="AircraftID" />
+          <ScalarProperty Name="AirportID" ColumnName="AirportID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FlightArrivals">
+      <EntityTypeMapping TypeName="kulula2Model.FlightArrival">
+        <MappingFragment StoreEntitySet="FlightArrival">
+          <ScalarProperty Name="ArrivalDate" ColumnName="ArrivalDate" />
+          <ScalarProperty Name="ArrivalTime" ColumnName="ArrivalTime" />
+          <ScalarProperty Name="AirportName" ColumnName="AirportName" />
+          <ScalarProperty Name="ArrivalID" ColumnName="ArrivalID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PreferredClasses">
+      <EntityTypeMapping TypeName="kulula2Model.PreferredClass">
+        <MappingFragment StoreEntitySet="PreferredClass">
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="FlightType" ColumnName="FlightType" />
+          <ScalarProperty Name="PreferredClassType" ColumnName="PreferredClassType" />
+          <ScalarProperty Name="AirportID" ColumnName="AirportID" />
+          <ScalarProperty Name="PreferredClassID" ColumnName="PreferredClassID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FlightTravellerDetails">
+      <EntityTypeMapping TypeName="kulula2Model.FlightTravellerDetail">
+        <MappingFragment StoreEntitySet="FlightTravellerDetails">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Mobilenumber" ColumnName="Mobilenumber" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Dateofbirth" ColumnName="Dateofbirth" />
+          <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+          <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="TravellerID" ColumnName="TravellerID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Carts">
+      <EntityTypeMapping TypeName="kulula2Model.Cart">
+        <MappingFragment StoreEntitySet="Cart">
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="Totalprice" ColumnName="Totalprice" />
+          <ScalarProperty Name="ExtraID" ColumnName="ExtraID" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+          <ScalarProperty Name="PreferredClassID" ColumnName="PreferredClassID" />
+          <ScalarProperty Name="CartID" ColumnName="CartID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FlightBookings">
+      <EntityTypeMapping TypeName="kulula2Model.FlightBooking">
+        <MappingFragment StoreEntitySet="FlightBooking">
+          <ScalarProperty Name="TotalFare" ColumnName="TotalFare" />
+          <ScalarProperty Name="NumberOfTravellers" ColumnName="NumberOfTravellers" />
+          <ScalarProperty Name="ReturningDate" ColumnName="ReturningDate" />
+          <ScalarProperty Name="SeatNumber" ColumnName="SeatNumber" />
+          <ScalarProperty Name="ExtraID" ColumnName="ExtraID" />
+          <ScalarProperty Name="AirportID" ColumnName="AirportID" />
+          <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+          <ScalarProperty Name="FlightID" ColumnName="FlightID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,415 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="kulula2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Administrator">
+    <Key>
+      <PropertyRef Name="AdministratorID" />
+    </Key>
+    <Property Name="AdministratorID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Lastname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Aircraft">
+    <Key>
+      <PropertyRef Name="AircraftID" />
+    </Key>
+    <Property Name="AircraftID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AircraftName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CarrierName" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="CartID" />
+    </Key>
+    <Property Name="CartID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PreferredClassID" Type="int" Nullable="false" />
+    <Property Name="SeatNumber" Type="varchar" MaxLength="50" />
+    <Property Name="ExtraID" Type="int" />
+    <Property Name="Totalprice" Type="float" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CreditCard">
+    <Key>
+      <PropertyRef Name="CreditID" />
+    </Key>
+    <Property Name="CreditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentID" Type="int" />
+    <Property Name="CardNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cardname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ExpirationDate" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Cvv" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Address" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Country" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="City" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="PostalCode" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Flight Departure">
+    <Key>
+      <PropertyRef Name="AirportID" />
+    </Key>
+    <Property Name="AirportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AircraftID" Type="int" Nullable="false" />
+    <Property Name="ArrivalID" Type="int" Nullable="false" />
+    <Property Name="AirportName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DepartingTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DepartingDate" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FlightArrival">
+    <Key>
+      <PropertyRef Name="ArrivalID" />
+    </Key>
+    <Property Name="ArrivalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AirportName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ArrivalTime" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="ArrivalDate" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FlightBooking">
+    <Key>
+      <PropertyRef Name="FlightID" />
+    </Key>
+    <Property Name="FlightID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="AirportID" Type="int" Nullable="false" />
+    <Property Name="ExtraID" Type="int" />
+    <Property Name="SeatNumber" Type="varchar" MaxLength="50" />
+    <Property Name="ReturningDate" Type="varchar" MaxLength="50" />
+    <Property Name="NumberOfTravellers" Type="int" />
+    <Property Name="TotalFare" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FlightExtras">
+    <Key>
+      <PropertyRef Name="ExtraID" />
+    </Key>
+    <Property Name="ExtraID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FlightextraType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="TotalPrice" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FlightTravellerDetails">
+    <Key>
+      <PropertyRef Name="TravellerID" />
+    </Key>
+    <Property Name="TravellerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="SeatNumber" Type="varchar" MaxLength="50" />
+    <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Lastname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Dateofbirth" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Mobilenumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="InternetPaymentSID">
+    <Key>
+      <PropertyRef Name="InternetPaymentID" />
+    </Key>
+    <Property Name="InternetPaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PaymentID" Type="int" />
+    <Property Name="BranchCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="BranchName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CardNumber" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Payments">
+    <Key>
+      <PropertyRef Name="PaymentID" />
+    </Key>
+    <Property Name="PaymentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerID" Type="int" Nullable="false" />
+    <Property Name="PaymentType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="TotalAmount" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PreferredClass">
+    <Key>
+      <PropertyRef Name="PreferredClassID" />
+    </Key>
+    <Property Name="PreferredClassID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AirportID" Type="int" Nullable="false" />
+    <Property Name="PreferredClassType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FlightType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SeatSelection">
+    <Key>
+      <PropertyRef Name="SeatNumber" />
+    </Key>
+    <Property Name="SeatType" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="SeatNumber" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Price" Type="float" Nullable="false" />
+    <Property Name="Quantity" Type="float" Nullable="false" />
+    <Property Name="Total" Type="float" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="CustomerID" />
+    </Key>
+    <Property Name="CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Firstname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Lastname" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="dateofbirth" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MobileNumbers" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Cart_FlightExtras">
+    <End Role="FlightExtras" Type="Self.FlightExtras" Multiplicity="0..1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FlightExtras">
+        <PropertyRef Name="ExtraID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="ExtraID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_PreferredClass">
+    <End Role="PreferredClass" Type="Self.PreferredClass" Multiplicity="1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PreferredClass">
+        <PropertyRef Name="PreferredClassID" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="PreferredClassID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Cart_SeatSelection">
+    <End Role="SeatSelection" Type="Self.SeatSelection" Multiplicity="0..1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SeatSelection">
+        <PropertyRef Name="SeatNumber" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="SeatNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CreditCard_Payments">
+    <End Role="Payments" Type="Self.Payments" Multiplicity="0..1" />
+    <End Role="CreditCard" Type="Self.CreditCard" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payments">
+        <PropertyRef Name="PaymentID" />
+      </Principal>
+      <Dependent Role="CreditCard">
+        <PropertyRef Name="PaymentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight Departure_Aircraft">
+    <End Role="Aircraft" Type="Self.Aircraft" Multiplicity="1" />
+    <End Role="Flight Departure" Type="Self.Flight Departure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Aircraft">
+        <PropertyRef Name="AircraftID" />
+      </Principal>
+      <Dependent Role="Flight Departure">
+        <PropertyRef Name="AircraftID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Flight Departure_FlightArrival">
+    <End Role="FlightArrival" Type="Self.FlightArrival" Multiplicity="1" />
+    <End Role="Flight Departure" Type="Self.Flight Departure" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FlightArrival">
+        <PropertyRef Name="ArrivalID" />
+      </Principal>
+      <Dependent Role="Flight Departure">
+        <PropertyRef Name="ArrivalID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FlightBooking_Flight Departure">
+    <End Role="Flight Departure" Type="Self.Flight Departure" Multiplicity="1" />
+    <End Role="FlightBooking" Type="Self.FlightBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight Departure">
+        <PropertyRef Name="AirportID" />
+      </Principal>
+      <Dependent Role="FlightBooking">
+        <PropertyRef Name="AirportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FlightBooking_FlightExtras">
+    <End Role="FlightExtras" Type="Self.FlightExtras" Multiplicity="0..1" />
+    <End Role="FlightBooking" Type="Self.FlightBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FlightExtras">
+        <PropertyRef Name="ExtraID" />
+      </Principal>
+      <Dependent Role="FlightBooking">
+        <PropertyRef Name="ExtraID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FlightBooking_SeatSelection">
+    <End Role="SeatSelection" Type="Self.SeatSelection" Multiplicity="0..1" />
+    <End Role="FlightBooking" Type="Self.FlightBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SeatSelection">
+        <PropertyRef Name="SeatNumber" />
+      </Principal>
+      <Dependent Role="FlightBooking">
+        <PropertyRef Name="SeatNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FlightBooking_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="FlightBooking" Type="Self.FlightBooking" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="FlightBooking">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FlightTravellerDetails_SeatSelection">
+    <End Role="SeatSelection" Type="Self.SeatSelection" Multiplicity="0..1" />
+    <End Role="FlightTravellerDetails" Type="Self.FlightTravellerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SeatSelection">
+        <PropertyRef Name="SeatNumber" />
+      </Principal>
+      <Dependent Role="FlightTravellerDetails">
+        <PropertyRef Name="SeatNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FlightTravellerDetails_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="FlightTravellerDetails" Type="Self.FlightTravellerDetails" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="FlightTravellerDetails">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_InternetPaymentSID_Payments">
+    <End Role="Payments" Type="Self.Payments" Multiplicity="0..1" />
+    <End Role="InternetPaymentSID" Type="Self.InternetPaymentSID" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Payments">
+        <PropertyRef Name="PaymentID" />
+      </Principal>
+      <Dependent Role="InternetPaymentSID">
+        <PropertyRef Name="PaymentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Payments_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="Payments" Type="Self.Payments" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="CustomerID" />
+      </Principal>
+      <Dependent Role="Payments">
+        <PropertyRef Name="CustomerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PreferredClass_Flight Departure">
+    <End Role="Flight Departure" Type="Self.Flight Departure" Multiplicity="1" />
+    <End Role="PreferredClass" Type="Self.PreferredClass" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Flight Departure">
+        <PropertyRef Name="AirportID" />
+      </Principal>
+      <Dependent Role="PreferredClass">
+        <PropertyRef Name="AirportID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="kulula2ModelStoreContainer">
+    <EntitySet Name="Administrator" EntityType="Self.Administrator" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Aircraft" EntityType="Self.Aircraft" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Cart" EntityType="Self.Cart" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CreditCard" EntityType="Self.CreditCard" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Flight Departure" EntityType="Self.Flight Departure" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FlightArrival" EntityType="Self.FlightArrival" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FlightBooking" EntityType="Self.FlightBooking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FlightExtras" EntityType="Self.FlightExtras" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FlightTravellerDetails" EntityType="Self.FlightTravellerDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="InternetPaymentSID" EntityType="Self.InternetPaymentSID" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Payments" EntityType="Self.Payments" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PreferredClass" EntityType="Self.PreferredClass" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SeatSelection" EntityType="Self.SeatSelection" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Cart_FlightExtras" Association="Self.FK_Cart_FlightExtras">
+      <End Role="FlightExtras" EntitySet="FlightExtras" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_PreferredClass" Association="Self.FK_Cart_PreferredClass">
+      <End Role="PreferredClass" EntitySet="PreferredClass" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Cart_SeatSelection" Association="Self.FK_Cart_SeatSelection">
+      <End Role="SeatSelection" EntitySet="SeatSelection" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CreditCard_Payments" Association="Self.FK_CreditCard_Payments">
+      <End Role="Payments" EntitySet="Payments" />
+      <End Role="CreditCard" EntitySet="CreditCard" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight Departure_Aircraft" Association="Self.FK_Flight Departure_Aircraft">
+      <End Role="Aircraft" EntitySet="Aircraft" />
+      <End Role="Flight Departure" EntitySet="Flight Departure" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Flight Departure_FlightArrival" Association="Self.FK_Flight Departure_FlightArrival">
+      <End Role="FlightArrival" EntitySet="FlightArrival" />
+      <End Role="Flight Departure" EntitySet="Flight Departure" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FlightBooking_Flight Departure" Association="Self.FK_FlightBooking_Flight Departure">
+      <End Role="Flight Departure" EntitySet="Flight Departure" />
+      <End Role="FlightBooking" EntitySet="FlightBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FlightBooking_FlightExtras" Association="Self.FK_FlightBooking_FlightExtras">
+      <End Role="FlightExtras" EntitySet="FlightExtras" />
+      <End Role="FlightBooking" EntitySet="FlightBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FlightBooking_SeatSelection" Association="Self.FK_FlightBooking_SeatSelection">
+      <End Role="SeatSelection" EntitySet="SeatSelection" />
+      <End Role="FlightBooking" EntitySet="FlightBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FlightBooking_User" Association="Self.FK_FlightBooking_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FlightBooking" EntitySet="FlightBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FlightTravellerDetails_SeatSelection" Association="Self.FK_FlightTravellerDetails_SeatSelection">
+      <End Role="SeatSelection" EntitySet="SeatSelection" />
+      <End Role="FlightTravellerDetails" EntitySet="FlightTravellerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FlightTravellerDetails_User" Association="Self.FK_FlightTravellerDetails_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FlightTravellerDetails" EntitySet="FlightTravellerDetails" />
+    </AssociationSet>
+    <AssociationSet Name="FK_InternetPaymentSID_Payments" Association="Self.FK_InternetPaymentSID_Payments">
+      <End Role="Payments" EntitySet="Payments" />
+      <End Role="InternetPaymentSID" EntitySet="InternetPaymentSID" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Payments_User" Association="Self.FK_Payments_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Payments" EntitySet="Payments" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PreferredClass_Flight Departure" Association="Self.FK_PreferredClass_Flight Departure">
+      <End Role="Flight Departure" EntitySet="Flight Departure" />
+      <End Role="PreferredClass" EntitySet="PreferredClass" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
