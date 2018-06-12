@@ -4,23 +4,27 @@ import {Router} from'@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {SeatSelection} from '../../FlightModel/seat-selection.model';
 import {SeatSelectionService} from '../../flightServices/seat-selection.service';
+import {AirportService} from '../../flightServices/Flight-Departure.service';
+import {Airport} from '../../FlightModel/Flight-Departure.model';
 
 @Component({
   selector: 'app-manage-seat-selection',
   templateUrl: './manage-seat-selection.component.html',
   styleUrls: ['./manage-seat-selection.component.css'],
-  providers:[SeatSelectionService]
+  providers:[SeatSelectionService,AirportService]
 })
 export class ManageSeatSelectionComponent implements OnInit {
   seatselection : SeatSelection;
   selectedseat: SeatSelection;
   seatselectionlist : SeatSelection[];
   totals:number;
-
-  constructor(public seatselectionservice : SeatSelectionService,private toast : ToastrService,private router : Router) { }
+  combo: string="Select Your Airport";
+  airport: Airport;
+  constructor(public seatselectionservice : SeatSelectionService,private toast : ToastrService,private router : Router, public airportservice : AirportService) { }
 
   ngOnInit() {
     this.resetForm();
+    this.airportservice.getAirpot();
    this.seatselectionservice.GetseatselectionList();
   }
   resetForm(form? : NgForm)
@@ -30,6 +34,7 @@ export class ManageSeatSelectionComponent implements OnInit {
      this.seatselectionservice.selectedseat={
       SeatType:'',
       SeatNumber:'',
+      AirportID: +localStorage.getItem("AirportID"),
       Price : 0,
       Quantity: 0,
       Total : 0
@@ -65,5 +70,12 @@ export class ManageSeatSelectionComponent implements OnInit {
              }
            )
            }
-         }   
+         } 
+
+         airportinfor(airport){
+          this.combo = airport.AirportName;
+          this.airportservice.sectedAirport = Object.assign({}, airport);
+          localStorage.setItem('AirportID', this.airportservice.sectedAirport.AirportID+'');
+           localStorage.setItem('AirportName', this.airportservice.sectedAirport.AirportName+'');
+          } 
 }
