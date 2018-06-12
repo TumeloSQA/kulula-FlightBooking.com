@@ -26,6 +26,7 @@
         <div class="row">
             <form class="col s12" #SeatSelectionForm="ngForm">
                 <div class="row">
+                    <input type="hidden" name="AirportID" #AirportID="ngModel" [(ngModel)]="seatselectionservice.selectedseat.AirportID" class="validate">
                     <div class="input-field col s6">
                         <input placeholder="SeatType" id="SeatType" type="text" name="SeatType" #SeatType="ngModel" [(ngModel)]="seatselectionservice.selectedseat.SeatType" class="validate" required minlength="4">
                         <label>Seat Type </label>
@@ -42,6 +43,20 @@
                         </div>
                     </div>
 
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <ng2-dropdown>
+                            <ng2-dropdown-button>
+                                {{combo}}
+                            </ng2-dropdown-button>
+                            <ng2-dropdown-menu>
+                                <ng2-menu-item *ngFor="let airport of airportservice.airportlist" (click)="airportinfor(airport)">
+                                    {{airport.AirportName}}
+                                </ng2-menu-item>
+                            </ng2-dropdown-menu>
+                        </ng2-dropdown>
+                    </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s6">
@@ -84,6 +99,7 @@
             <tr>
                 <th>Seat Type</th>
                 <th>Seat Number</th>
+                <th>airportID</th>
                 <th>Price</th>
                 <th>Quantity</th>
                 <th>Total</th>
@@ -94,6 +110,7 @@
             <tr *ngFor="let  seatselection of seatselectionservice.seatselectionlist">
                 <td>{{seatselection.SeatType}}</td>
                 <td>{{seatselection.SeatNumber}}</td>
+                <td>{{seatselection.AirportID}}</td>
                 <td>{{seatselection.Price}}</td>
                 <td>{{seatselection.Quantity}}</td>
                 <td>{{seatselection.Total}}</td>
