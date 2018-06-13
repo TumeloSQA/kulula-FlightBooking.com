@@ -180,10 +180,10 @@
         </label>
         </p>
         <div class="row">
-            <form class="col s12 white" #internetpaymentForm="ngForm" (ngSubmit)="OnSubmitInternetPayment(internetpayment)" id="form2">
+            <form #internetpaymentForm="ngForm" (ngSubmit)="OnSubmitInternetPayment(internetpaymentForm)" id="form2">
                 <div class="row">
                     <input type="hidden" name="InternetPaymentID" #InternetPaymentID="ngModel" [(ngModel)]="internetpayment.InternetPaymentID" class="validate">
-                    <input type="hidden" name="PaymentID" #PaymentID="ngModel" [(ngModel)]="creditCard.PaymentID" class="validate">
+                    <input type="hidden" name="PaymentID" #PaymentID="ngModel" [(ngModel)]="internetpayment.PaymentID" class="validate">
                     <div class="input-field col s7">
 
                         <input placeholder="BranchCode" id="BranchCode" type="text" name="BranchCode" #BranchCode="ngModel" [(ngModel)]="internetpayment.BranchCode" class="validate" required>
