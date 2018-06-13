@@ -1,6 +1,6 @@
 <nav *ngIf="userClaims">
     <div class="nav-wrapper">
-        <a routerLink='/homepage' routerLinkActive='active' class="logo"><img class="image2" src="assets\images\logo.png" alt=""></a>
+        <a routerLink='/homepage' routerLinkActive='active' class="logo"><img src="assets\images\logo.png" alt=""></a>
         <ul class="right hide-on-med-and-down">
             <li><a><i class="Tiny material-icons">local_airport</i>new flight</a></li>
             <li><a href="manage.html"><i class="Tiny material-icons">border_color</i>manage bookings</a></li>
@@ -11,7 +11,6 @@
 </nav>
 <p>.</p>
 
-
 <div class="di">
     <div class="bt">
         <button class="btn waves-effect waves-light right green darken-4" type="submit">R {{CartTotalPrice}}
@@ -20,7 +19,7 @@
     </div>
     <div class="row">
         <div class="col s12">
-            <p class="pas">Departing Airport : {{airport.AirportName}} >> Arriving Airport {{arrivalname}} || number of travellers : {{CartQuantity}}</p>
+            <p class="pas">Departing Airport : {{airport.AirportName}} >> Arriving Airport: {{arrivalname}} || number of travellers : {{flightbooking.NumberOfTravellers}}</p>
         </div>
         <div class="col s4">
             <p class="pas">Departing Date : {{date}} </p>
@@ -30,196 +29,114 @@
         </div>
     </div>
 </div>
-
-<h1>Almost done! Time for payment.</h1>
 <br>
 <br>
 <br>
 <br>
 <br>
 <br>
+<h1>Who Are You flying With?</h1>
 <br>
 <br>
 <br>
-
-
-<body>
-    <section>
-        <h2>Review and purchase</h2>
-        <p class="hes">Please review and agree to the applicable fare rules and legal stuff below to complete the purchase of your flight(s). Your form of payment will only be applied when you have selected the payment button below.</p>
-        <hr>
-        <h3>Flights</h3>
-        <hr class="hes">
-        <p class="he">Your departing flight</p>
-        <div class="depart">
-            <tr>
-                <td>
-                    <p class="hese">{{date}}</p>
-                </td>
-                <td>
-                    <p class="hese">{{time}} Depart {{airport.AirportName}}</p>
-
-                    <p class="hese">{{arrivaltime}} Arrival {{arrivalname}}</p>
-                </td>
-                <td>
-                    <p class="hese">{{specifiedclass}} <img class="image" src="assets\images\airline.png" alt=""> {{aircraftname}}</p>
-                    <p class="hese"> NON-STOP || </p>
-                </td>
-            </tr>
-            <p class="hes" *ngIf="flightbooking.ReturningDate">Your Returning Flight</p>
-            <tr *ngIf="flightbooking.ReturningDate">
-                <td>
-                    <p class="hese">{{flightbooking.ReturningDate}}</p>
-                </td>
-                <td>
-                    <p class="hese">{{arrivaltime}} Depart {{arrivalname}}</p>
-                    <p class="hese">{{time}} Arrival {{airport.AirportName}}</p>
-                </td>
-                <td>
-                    <p class="hese">{{specifiedclass}} <img class="image" src="assets\images\airline.png" alt=""> {{aircraftname}}</p>
-                    <p class="hese"> NON-STOP || </p>
-                </td>
-            </tr>
-        </div>
-        <hr class="hes">
-        <p class="hese">Fares: R{{preferredclassamount}}</p>
-        <hr class="hes">
-        <p class="hese">Flight extras: R{{ToTalExtras}}</p>
-        <hr class="hes">
-        <p class="hese">Total Amount: R{{CartTotalPrice}}</p>
-
-    </section>
-    <br>
-    <aside>
-        <h2>Select your payment option</h2>
-        <p class="text-accent-1">We've got a bunch of secure payment options to choose from.</p>
-        <hr class="hes">
-        <p class="space">
-            <label>
-              <input class="with-gap"  name="group3"  id="Credit" type="radio" (click)="shows1()" checked />
-              <span>Credit/Cheque Card  <img class="image1" src="assets\images\accepted_c22e0.png" alt=""></span>
-        </label>
-        </p>
-
-        <form #Credicardform="ngForm" (ngSubmit)="OnsubmitCrediCard(Credicardform)" id="div1">
-            <p class="billing">Please Enter Your credit Details</p>
-
+<br>
+<br>
+<section>
+    <div class="row">
+        <form class="col s12" #travellersdetailsRegistrationForm="ngForm">
+            <input type="hidden" name="TravellerID" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.TravellerID" class="validate">
+            <input type="hidden" name="CustomerID" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.CustomerID" class="validate">
             <div class="row">
-                <input type="hidden" name="CreditID" #CreditID="ngModel" [(ngModel)]="creditCard.CreditID" class="validate">
-                <input type="hidden" name="PaymentID" #PaymentID="ngModel" [(ngModel)]="creditCard.PaymentID" class="validate">
                 <div class="input-field col s6">
-                    <input placeholder="CardNumber" id="CardNumber" type="text" name="CardNumber" #CardNumber="ngModel" [(ngModel)]="creditCard.CardNumber" class="validate" required>
-                    <div class="validation-error" *ngIf="CardNumber.invalid && CardNumber.touched">
-                        <p>Input Atlist 4 characters!</p>
-                    </div>
+                    <i class="material-icons prefix">account_circle</i>
+
+                    <input placeholder="Firstname" type="text" name="Firstname" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Firstname" class="validate" required minlength="4">
+                    <label data-error="invalid name" for="name">first name</label>
+
+
                 </div>
                 <div class="input-field col s6">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input placeholder="Lastname" type="text" name="Lastname" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Lastname" class="validate" required minlength="4">
+                    <label data-error="input correct name" for="Lastname">Lastname</label>
 
-                    <input placeholder="Cardname" type="text" name="Cardname" #Cardname="ngModel" [(ngModel)]="creditCard.Cardname" class="validate" required minlength="4">
-                    <div class="validation-error" *ngIf="Cardname.invalid && Cardname.touched">
-                        <p>Input Atlist 4 characters!</p>
-                    </div>
                 </div>
 
             </div>
             <div class="row">
                 <div class="input-field col s6">
+                    <i class="material-icons prefix">date_range</i>
+                    <input placeholder="dateofbirth" type="date" name="dateofbirth" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Dateofbirth" class="validate" [pattern]="dateofbirthPattern" required>
+                    <label>date of birth</label>
 
-                    <input placeholder="ExpirationDate" type="date" name="ExpirationDate" #ExpirationDate="ngModel" [(ngModel)]="creditCard.ExpirationDate" class="validate" required>
-                    <label for="ExpirationDate">Expiration Date</label>
                 </div>
                 <div class="input-field col s6">
-                    <input placeholder="Cvv" type="text" name="Cvv" #Cvv="ngModel" [(ngModel)]="creditCard.Cvv" class="validate" required>
+                    <i class="material-icons prefix">call</i>
+                    <input placeholder="MobileNumber" type="text" name="MobileNumber" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Mobilenumber" class="validate" required>
+                    <label data-error="Invalid phone Numbers" for="MobileNumbers">
+                  Mobile Numeber
+                </label>
 
                 </div>
             </div>
 
-
-            <p class="billing">Please Enter Your Billing Address information</p>
-            <div class="row">
-                <div class="input-field col s7">
-
-                    <input placeholder="Address" id="Address" type="text" name="Address" #Address="ngModel" [(ngModel)]="creditCard.Address" class="validate" required>
-
-                    <div class="validation-error" *ngIf="Address.invalid && Address.touched">
-                        <p>Input Atlist 4 characters!</p>
-                    </div>
-                </div>
-                <div class="input-field col s7">
-
-                    <input placeholder="Country" type="text" name="Country" #Country="ngModel" [(ngModel)]="creditCard.Country" class="validate" required minlength="4">
-                    <div class="validation-error" *ngIf="Country.invalid && Country.touched">
-                        <p>Input Atlist 4 characters!</p>
-                    </div>
-                </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">accessibility</i>
+                <input placeholder="Gender" type="text" name="Gender" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Gender" [pattern]="GenderPattern" class="validate" required>
+                <label data-error="Required field" for="Gender">Gender</label>
 
             </div>
-            <div class="row">
-                <div class="input-field col s7">
-
-                    <input placeholder="City" type="text" name="City" #City="ngModel" [(ngModel)]="creditCard.City" class="validate" required>
-
-                </div>
-                <div class="input-field col s7">
-                    <input placeholder="PostalCode" type="text" name="PostalCode" #PostalCode="ngModel" [(ngModel)]="creditCard.PostalCode" class="validate" required>
-
-                </div>
+            <div class="input-field col s6">
+                <i class="material-icons prefix">mail</i>
+                <input placeholder="Email" type="text" name="Email" class="validate" [(ngModel)]="travellersdetailsService.selectedFlightTravellers.Email" [pattern]="emailPattern" required>
+                <label data-error="Invalid Email" for="Email">Enter Your Email</label>
             </div>
-
-            <button [disabled]="!Credicardform.valid" class="btn waves-effect waves-light  blue-grey darken-4" type="submit" (click)="disableSID()">Save infomation
-            <i class="material-icons right">send</i>
-    </button>
-
+            <br>
+            <br>
+            <button [disabled]="flightbooking.NumberOfTravellers == 1" id="btnDisable" class="btn waves-effect waves-light" (click)="onSubmit(travellersdetailsRegistrationForm)">Submit</button>
+            <button class="btn waves-effect waves-light" (click)="Update(travellersdetailsRegistrationForm)">Update</button>
         </form>
-        <hr class="hes">
-        <p class="space">
-            <label>
-                  <input class="with-gap" name="group3" id="SID" type="radio" (click)="shows()" />
-                  <span>Internet Payment SID  <img class="image" src="assets\images\sid-instant-eft-logo-2018.png" alt=""></span>
-                  
-        </label>
-        </p>
-        <div class="row">
-            <form class="col s12 white" #internetpaymentForm="ngForm" (ngSubmit)="OnSubmitInternetPayment(internetpayment)" id="form2">
-                <div class="row">
-                    <input type="hidden" name="InternetPaymentID" #InternetPaymentID="ngModel" [(ngModel)]="internetpayment.InternetPaymentID" class="validate">
-                    <input type="hidden" name="PaymentID" #PaymentID="ngModel" [(ngModel)]="internetpayment.PaymentID" class="validate">
-                    <div class="input-field col s7">
-
-                        <input placeholder="BranchCode" id="BranchCode" type="text" name="BranchCode" #BranchCode="ngModel" [(ngModel)]="internetpayment.BranchCode" class="validate" required>
-                        <label>Branch Code</label>
-                        <div class="validation-error" *ngIf="BranchCode.invalid && BranchCode.touched">
-                            <p>Input Atlist 4 characters!</p>
-                        </div>
-                    </div>
-                    <div class="input-field col s7">
-
-                        <input placeholder="BranchName" type="text" name="BranchName" #BranchName="ngModel" [(ngModel)]="internetpayment.BranchName" class="validate" required minlength="4">
-                        <label>Branch Namee</label>
-                        <div class="validation-error" *ngIf="BranchName.invalid && BranchName.touched">
-                            <p>Input Atlist 4 characters!</p>
-                        </div>
-                    </div>
-                    <div class="input-field col s7">
-                        <input placeholder="CardNumber" type="text" name="CardNumber" #CardNumber="ngModel" [(ngModel)]="internetpayment.CardNumber" class="validate" required minlength="4">
-                        <label>Card Number</label>
-                        <div class="validation-error" *ngIf="BranchName.invalid && BranchName.touched">
-                            <p>Input Atlist 4 characters!</p>
-                        </div>
-                    </div>
-
-                </div>
-                <button [disabled]="!internetpaymentForm.valid" class="btn waves-effect waves-light  blue-grey darken-4" type="submit" (click)="disableCredit()">Save infomation
-                <i class="material-icons right">send</i>
-        </button>
-            </form>
-        </div>
-    </aside>
-
-
-    <div class="pay">
-        <button class="btn waves-effect waves-light  blue-grey darken-4" (click)="onSubmitPayment()">Make Payment
-        <i class="material-icons left">payment</i>
-</button>
     </div>
-</body>
+    <table class="responsive-table">
+        <table>
+            <thead>
+                <tr>
+                    <th>Firstname</th>
+                    <th>Lastname </th>
+                    <th> Dateofbirth</th>
+                    <th>Gender</th>
+                    <th> Mobilenumber</th>
+                    <th> Email </th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>{{userClaims.Firstname}}</td>
+                    <td>{{userClaims.Lastname}}</td>
+                    <td>{{userClaims.Dateofbirth}}</td>
+                    <td>{{userClaims.Gender}}</td>
+                    <td>{{userClaims.MobileNumbers}}</td>
+                    <td>{{userClaims.Email}}</td>
+                </tr>
+                <tr *ngFor="let flighttravellerdetail of travellersdetailsService.flightTravellersList ">
+                    <td>{{flighttravellerdetail.Firstname}}</td>
+                    <td>{{flighttravellerdetail.Lastname}}</td>
+                    <td>{{flighttravellerdetail.Dateofbirth}}</td>
+                    <td>{{flighttravellerdetail.Gender}}</td>
+                    <td>{{flighttravellerdetail.Mobilenumber}}</td>
+                    <td>{{flighttravellerdetail.Email}}</td>
+                    <td>
+                        <a class="btn" (click)="showForEdit(flighttravellerdetail)">
+                            <i class="tiny material-icons">create</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </table>
+</section>
+<div class="bto">
+    <button [disabled]="!flightbooking.NumberOfTravellers == 1" class="btn waves-effect waves-light width=400px left green darken-4" (click)="travellersdetails()">SEAT SELECTION
+    </button>
+</div>
