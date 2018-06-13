@@ -55,11 +55,12 @@ export class ConfirmationComponent implements OnInit {
   preferredclassamount : number;
   specifiedclass : string;
   ToTalExtras: number;
+  specifiedflighttravellerdetail :Array<FlightTravellerDetail> =[]
   constructor(private UserService : UserService,private router : Router,private toast : ToastrService,private preferredclassservice : PreferredClassService,public cartservice : CartService,private airportservice: AirportService,private routeservice : RouteService,private aircraftservice : AircraftService,public travellersdetailsService : FlightTravellerDetailService ) { }
  
   ngOnInit() {
 this.resertForm();
-this.travellersdetailsService.getFlightTravellersDetailsList();
+
      this.UserService.getUserClaims().subscribe((data: any)=>{
        this.userClaims = data;
      });
@@ -121,6 +122,17 @@ this.specifiedclass = this.getprefferedClass();
 this.preferredclassamount = this.getPrefferedClassPrice();
 }
 
+})
+
+
+this.travellersdetailsService.getFlightTravellersDetailsList();
+this.travellersdetailsService.GetspecifiedFlightTravellerDetail();
+this.travellersdetailsService.specifiedflightTraveller.subscribe((classtype:Array<FlightTravellerDetail>)=>{
+  this.specifiedflighttravellerdetail = classtype;
+  if(classtype.length > 0){
+    this.arr1Length = classtype.length;
+  }
+  
 })
 
 }
@@ -225,13 +237,25 @@ getprefferedClass(){
 
 print(){
   window.print();
+
   for(var x =0;x < this.arr1Length; x++){
- this.cartservice.DeleteCart(this.cartList[x].CartID).subscribe(x =>{
-  this.cartservice.Getcartlist();
-  this.cartservice.getspecifiedCart();
-  console.log('Deleted');
- })
+    this.travellersdetailsService.DeleteFlightTravellerDetails(this.specifiedflighttravellerdetail[x].TravellerID).subscribe(x =>{
+      this.travellersdetailsService.GetFlightTravellerDetail();
+      this.travellersdetailsService.GetspecifiedFlightTravellerDetail();
+      console.log('Deleted');
+    })
   }
+
+}
+confirmation(){
+  for(var x =0;x < this.arr1Length; x++){
+    this.cartservice.DeleteCart(this.cartList[x].CartID).subscribe(x =>{
+     this.cartservice.Getcartlist();
+     this.cartservice.getspecifiedCart();
+     console.log('Deleted');
+    })
+   
+   }
 }
 //  @ViewChild('content') content : ElementRef;
 
