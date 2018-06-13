@@ -17,6 +17,8 @@
     </div>
     <button class="btn waves-effect waves-light left" (click)="print()">Print Ticket
     </button>
+    <button class="btn waves-effect waves-light left" (click)="confirmation()">Confirm
+    </button>
     <br>
     <p class="para">Your trip details</p>
     <div class="sect2">
@@ -37,7 +39,7 @@
         </div>
         <hr>
         <p class="para3">Payment details</p>
-        <p class="para3"><img class="image1" src="assets\images\accepted_c22e0.png" alt="">{{payments}}: R{{CartTotalPrice}} </p>
+        <p class="para3"><img class="image1" src="assets\images\accepted_c22e0.png" alt="">{{payments}} </p>
         <hr>
         <p class="para3">Booking summary</p>
         <p class="para3">Fares: R {{preferredclassamount}} </p>
