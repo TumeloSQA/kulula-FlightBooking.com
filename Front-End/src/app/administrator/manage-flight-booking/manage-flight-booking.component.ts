@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FlightBooking} from '../../FlightModel/flight-booking.model';
 import {FlightBookingService} from '../../flightServices/flight-booking.service';
-import {Router} from'@angular/router';
 import {ToastrService} from 'ngx-toastr';
 import {AirportService} from '../../flightServices/Flight-Departure.service';
 import {Airport} from '../../FlightModel/Flight-Departure.model';
@@ -17,52 +16,54 @@ import {UserService} from '../../shared/user.service';
 export class ManageFlightBookingComponent implements OnInit {
 
   flightbooking : FlightBooking
-  airportlist:Array<Airport> = [];
+  airportlist:Array<Airport>=[];
   arr1Length: number;
   airportname :string;
-  Customerlist:Array<User> = []
+  Customerlist:Array<User>=[];
   username : string; 
   constructor(public flightbookingservice : FlightBookingService,private toastr : ToastrService, private airportservice : AirportService,private userservice : UserService) { }
 
   ngOnInit() {
     this.flightbookingservice.getFlightBooking();
+this.flightbookingservice.getflightbookindata();
 
+//  this.airportservice.getAirpot();
+// this.airportservice.getspecifiedAirport();
+// this.airportservice.specifiedAirport.subscribe((classtype:Array<Airport>)=>{
+//   this.airportlist = classtype;
+//   if(classtype.length > 0){
+//     this.arr1Length = classtype.length;
+// this.airportname = this.getairportname();
+//  console.log(this.flightbooking.AirportID);
+//   }
+// })
 
- this.airportservice.getAirpot();
-this.airportservice.getspecifiedAirport();
-this.airportservice.specifiedAirport.subscribe((classtype:Array<Airport>)=>{
-  this.airportlist = classtype;
-  if(classtype.length > 0){
-    this.arr1Length = classtype.length;
-this.airportname = this.getairportname();
-  }
-})
-
-this.userservice.getspecifiedcustomer();
-this.userservice.specifiedCustomer.subscribe((classtype:Array<User>)=>{
-this.Customerlist = classtype;
-if(classtype.length > 0){
-  this.arr1Length = classtype.length;
-this.username = this.getcustomername();
-}
-})
-}
-
-getcustomername(){
-  for(var x =0; x < this.arr1Length; x++){
-    if(this.Customerlist[x].CustomerID == this.flightbooking.CustomerID ){
-       return this.Customerlist[x].UserName;
-    }
-  }
+// this.userservice.getCustomer();
+// this.userservice.getspecifiedcustomer();
+// this.userservice.specifiedCustomer.subscribe((classtype:Array<User>)=>{
+// this.Customerlist = classtype;
+// if(classtype.length > 0){
+//   this.arr1Length = classtype.length;
+// console.log(this.username = this.getcustomername());
+// }
+// })
 }
 
-getairportname(){
-  for(var x =0;x < this.arr1Length; x++){
-    if( this.airportlist[x].AirportID == this.flightbooking.AirportID){
-      return  this.airportlist[x].AirportName;
-    }
-   }
-}
+// getcustomername(){
+//   for(var x =0; x < this.arr1Length; x++){
+//     if(this.Customerlist[x].CustomerID == this.flightbooking.CustomerID ){
+//        return this.Customerlist[x].UserName;
+//     }
+//   }
+// }
+
+// getairportname(){
+//   for(var x =0;x < this.arr1Length; x++){
+//     if( this.airportlist[x].AirportID == this.flightbooking.AirportID){
+//       return  this.airportlist[x].AirportName;
+//     }
+//    }
+// }
 
   onDelete(id : number){
     if(confirm("are you sure you want to delete?")==true){
