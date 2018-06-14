@@ -21,7 +21,7 @@ namespace WebApi.Controllers
         public IQueryable<Object> GetSeatSelections()
         {
             var SeatSelection = db.SeatSelections.Select(x => new { x.SeatType, x.SeatNumber, x.Price, x.Quantity, x.Total });
-            return db.SeatSelections;
+            return SeatSelection;
         }
 
         // GET: api/SeatSelections/5
