@@ -148,7 +148,17 @@
         </thead>
         <tbody>
             <tr>
-                <td>{{time}} >> {{arrivaltime}}</td>
+                <td>
+                    <div class="row">
+                        <div class="col s4">
+                            <p class="pa">Returning Date: {{flightbooking.ReturningDate}}</p>
+                        </div>
+                        <div class="col s4">
+                            <p class="pa">Departure: {{time}} {{airport.AirportName}}</p>
+                            <p class="pa">Arrival: {{arrivaltime}} {{arrivalname}}</p>
+                        </div>
+                    </div>
+                </td>
                 <td>{{aircraftname}}<img src="assets\images\airline.png" alt=""></td>
                 <td><a class="waves-effect waves-light btn modal-trigger" href="#modal1">From R{{getbusi}}</a>
 
