@@ -56,7 +56,7 @@
                                 <p class="pase">Price: R{{Flightbagcover}}</p>
                                 <p class="pase">per traveller, per flight</p>
                                 <p class="center-align">
-                                    <button class="btn waves-effect waves-light center  blue-grey darken-2" (click)="updatecart1()">ADD Flight & bag cover</button>
+                                    <button [disabled]="this.flightExtrelist2[0].Quantity == 0" class="btn waves-effect waves-light center  blue-grey darken-2" (click)="updatecart1()">ADD Flight & bag cover</button>
                                 </p>
                             </div>
                         </div>
@@ -75,7 +75,7 @@
                                 <p class="pase">Price: R{{Extrabags}}</p>
                                 <p class="pase">per bag, per flight</p>
                                 <p class="center-align">
-                                    <button class="btn waves-effect waves-light center teal darken-3" (click)="updatecart2()">ADD EXTRAS BAGS</button>
+                                    <button [disabled]="this.flightExtrelist2[1].Quantity == 0" class="btn waves-effect waves-light center teal darken-3" (click)="updatecart2()">ADD EXTRAS BAGS</button>
                                 </p>
                             </div>
                         </div>
@@ -94,7 +94,7 @@
                                 <p class="pase">Price: R{{SLOWXSLounge}}</p>
                                 <p class="pase">per person</p>
                                 <p class="center-align">
-                                    <button class="btn waves-effect waves-light center cyan darken-4" (click)="updatecart3()">ADD SLOW XS LOUNGE</button>
+                                    <button [disabled]="this.flightExtrelist2[2].Quantity == 0" class="btn waves-effect waves-light center cyan darken-4" (click)="updatecart3()">ADD SLOW XS LOUNGE</button>
                                 </p>
                             </div>
                         </div>
