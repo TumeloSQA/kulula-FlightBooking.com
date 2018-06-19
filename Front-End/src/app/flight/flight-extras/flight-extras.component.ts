@@ -197,6 +197,16 @@ this.cartservice.PutCart(this.cart.CartID,this.cart).subscribe(data =>{
    localStorage.setItem("Flight&bagcover",this.flightExtrelist2[0].Price + '');
   this.toast.info('Added to Cart!');
 })
+this.flightextra={
+  ExtraID: this.flightExtrelist2[0].ExtraID,
+  FlightextraType: this.flightExtrelist2[0].FlightextraType,
+  Price: this.flightExtrelist2[0].Price,
+  Quantity: this.flightExtrelist2[0].Quantity - 1,
+  TotalPrice: this.flightExtrelist2[0].Quantity * this.flightExtrelist2[0].Price
+}
+this.flightExtraservice.PutFlightEtras(this.flightextra.ExtraID,this.flightextra).subscribe(data =>{
+
+})
 }
 updatecart2(){
   this.cart ={
@@ -213,6 +223,18 @@ this.cartservice.PutCart(this.cart.CartID,this.cart).subscribe(data =>{
    localStorage.setItem("Extrabags",this.flightExtrelist2[1].Price + '');
   this.toast.info('Added to Cart!');
 })
+
+this.flightextra={
+  ExtraID: this.flightExtrelist2[1].ExtraID,
+  FlightextraType: this.flightExtrelist2[1].FlightextraType,
+  Price: this.flightExtrelist2[1].Price,
+  Quantity: this.flightExtrelist2[1].Quantity - 1,
+  TotalPrice: this.flightExtrelist2[1].Quantity * this.flightExtrelist2[1].Price
+}
+this.flightExtraservice.PutFlightEtras(this.flightextra.ExtraID,this.flightextra).subscribe(data =>{
+  
+})
+
 }
 updatecart3(){
   this.cart ={
@@ -229,6 +251,17 @@ this.cartservice.PutCart(this.cart.CartID,this.cart).subscribe(data =>{
    localStorage.setItem("SLOWXSLounge",this.flightExtrelist2[2].Price + '');
   this.toast.info('Added to Cart!');
 })
+this.flightextra={
+  ExtraID: this.flightExtrelist2[2].ExtraID,
+  FlightextraType: this.flightExtrelist2[2].FlightextraType,
+  Price: this.flightExtrelist2[2].Price,
+  Quantity: this.flightExtrelist2[2].Quantity - 1,
+  TotalPrice: this.flightExtrelist2[2].Quantity * this.flightExtrelist2[2].Price
+}
+this.flightExtraservice.PutFlightEtras(this.flightextra.ExtraID,this.flightextra).subscribe(data =>{
+  
+})
+
 }
 routers(){
   this.router.navigate(["/flight-payment"]);
