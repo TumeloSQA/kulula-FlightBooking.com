@@ -222,5 +222,5 @@
     </table>
 </section>
 <div class="bto">
-    <button class="btn waves-effect waves-light left green darken-4" (click)="travellersdetails()">CONTINUE TO TRAVELLERS</button>
+    <button [disabled]="CartTotalPrice == null" class="btn waves-effect waves-light left green darken-4" (click)="travellersdetails()">CONTINUE TO TRAVELLERS</button>
 </div>
