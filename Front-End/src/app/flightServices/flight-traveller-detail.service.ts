@@ -32,7 +32,7 @@ GetFlightTravellerDetail()
 }
 
 getFlightTravellersDetailsList(){
-return this.http.get(this.rootUrl+'api/FlightTravellerDetails').map((data:Response)=>{
+return this.http.get(this.rootUrl+'api/GetFlightTravellerDetails?id='+localStorage.getItem("CustomerID")).map((data:Response)=>{
 return data.json() as FlightTravellerDetail[];
 }).toPromise().then(x => {
   this.flightTravellersList = x;
