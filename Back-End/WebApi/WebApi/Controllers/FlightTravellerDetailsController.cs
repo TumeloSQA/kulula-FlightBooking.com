@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -21,22 +21,51 @@ namespace WebApi.Controllers
         public IQueryable<Object> GetFlightTravellerDetails()
         {
             var FlightTravellerDetails = db.FlightTravellerDetails.Select(x => new { x.TravellerID, x.CustomerID, x.SeatNumber, x.Firstname, x.Lastname, x.Dateofbirth, x.Gender, x.Mobilenumber, x.Email });
+
             return FlightTravellerDetails;
         }
 
         // GET: api/FlightTravellerDetails/5
-       /* [ResponseType(typeof(FlightTravellerDetail))]
-        public IHttpActionResult GetFlightTravellerDetail(int id)
+        /* [ResponseType(typeof(FlightTravellerDetail))]
+         public IHttpActionResult GetFlightTravellerDetail(int id)
+         {
+             FlightTravellerDetail flightTravellerDetail = db.FlightTravellerDetails.Find(id);
+             if (flightTravellerDetail == null)
+             {
+                 return NotFound();
+             }
+
+             return Ok(flightTravellerDetail);
+         }*/
+
+        [HttpGet]
+        [Route("api/GetFlightTravellerDetails")]
+        [AllowAnonymous]
+        public IQueryable<Object> GetFlightTravellerDetails(int id)
         {
-            FlightTravellerDetail flightTravellerDetail = db.FlightTravellerDetails.Find(id);
-            if (flightTravellerDetail == null)
-            {
-                return NotFound();
+            var list = db.Users.Join(db.FlightTravellerDetails, trav => trav.CustomerID, ca => ca.CustomerID,
+                (trav, ca) => new { TravellerID = ca.TravellerID,
+                    CustomerID  = trav.CustomerID,
+                    SeatNumber  = ca.SeatNumber,
+                    Firstname  = ca.Firstname,
+                    Lastname = ca.Lastname,
+                    Dateofbirth = ca.Dateofbirth,
+                    Gender = ca.Gender,
+                    Mobilenumber = ca.Mobilenumber,
+                    Email =ca.Email
+                }
+
+
+            );
+
+            var details = list.Where(c => c.CustomerID.Equals(id));
+
+            if (details == null) {
+                return (null);
             }
 
-            return Ok(flightTravellerDetail);
-        }*/
-
+            return details;
+        }
         // PUT: api/FlightTravellerDetails/5
         [AllowAnonymous]
         [ResponseType(typeof(void))]
