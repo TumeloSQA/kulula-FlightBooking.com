@@ -235,19 +235,20 @@ getprefferedClass(){
   }
 }
 
-print(){
-  window.print();
+// print(){
+//   window.print();
 
-  for(var x =0;x < this.arr1Length; x++){
-    this.travellersdetailsService.DeleteFlightTravellerDetails(this.specifiedflighttravellerdetail[x].TravellerID).subscribe(x =>{
-      this.travellersdetailsService.GetFlightTravellerDetail();
-      this.travellersdetailsService.GetspecifiedFlightTravellerDetail();
-      console.log('Deleted');
-    })
-  }
+//   for(var x =0;x < this.arr1Length; x++){
+//     this.travellersdetailsService.DeleteFlightTravellerDetails(this.specifiedflighttravellerdetail[x].TravellerID).subscribe(x =>{
+//       this.travellersdetailsService.GetFlightTravellerDetail();
+//       this.travellersdetailsService.GetspecifiedFlightTravellerDetail();
+//       console.log('Deleted');
+//     })
+//   }
 
-}
+// }
 confirmation(){
+  window.print();
   for(var x =0;x < this.arr1Length; x++){
     this.cartservice.DeleteCart(this.cartList[x].CartID).subscribe(x =>{
      this.cartservice.Getcartlist();
